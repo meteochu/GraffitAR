@@ -54,7 +54,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = floor(self.collectionView!.bounds.width/2) - 32
+        let itemWidth = floor(self.collectionView!.bounds.width/2) - 16
         return CGSize(width: itemWidth, height: itemWidth * 9 / 16)
     }
     
