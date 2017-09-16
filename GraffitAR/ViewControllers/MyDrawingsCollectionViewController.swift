@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MyDrawingsCollectionViewController: UICollectionViewController {
+class MyDrawingsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var myDrawings: [Graffiti] = []
     
@@ -53,6 +53,11 @@ class MyDrawingsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as GalleryItemCell
         cell.grafitti = myDrawings[indexPath.item]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = floor(self.collectionView!.bounds.width/3)
+        return CGSize(width: itemWidth, height: itemWidth * 9 / 16)
     }
 
 }

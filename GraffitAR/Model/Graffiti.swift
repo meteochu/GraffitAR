@@ -10,7 +10,7 @@ import Foundation
 
 class Graffiti: NSObject, Codable {
     
-    let imageRef: String = ""
+    var imageRef: String = ""
     
     
 }

@@ -16,11 +16,11 @@ class GalleryItemCell: UICollectionViewCell {
     var grafitti: Graffiti! {
         didSet {
             let storage = Storage.storage()
-            print(grafitti.imageRef)
             storage.reference(withPath: "graffiti").child(grafitti.imageRef).getData(maxSize: Int64.max) { [weak self] (data, error) in
-                print(data ?? "", error ?? "")
                 if let data = data {
                     self?.imageView.image = UIImage(data: data)
+                } else {
+                    print(error ?? "No Error found.")
                 }
             }
         }
