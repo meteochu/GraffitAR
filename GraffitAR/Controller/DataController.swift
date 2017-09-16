@@ -67,6 +67,31 @@ class DataController: NSObject {
         }
     }
     
+    func fetchGalleryDrawings(callback: @escaping ([Graffiti]?) -> Void) -> UInt {
+        let reference = Database.database().reference()
+        return reference.child("graffiti").observe(.value, with: { [weak self] snapshot  in
+            guard let array = snapshot.value as? [String : AnyObject], let decoder = self?.decoder else {
+                return callback(nil)
+            }
+            // array is an array of key (PK) value is any object
+            var groups = [Graffiti]()
+            for id in array { // even replace this to only show first X amount and then enable paging.
+                do {
+                    let data = try JSONSerialization.data(withJSONObject: id.value, options: [])
+                    let graffiti = try decoder.decode(Graffiti.self, from: data)
+                    groups.append(graffiti)
+                } catch {
+                    print(error)
+                }
+            }
+            callback(groups)
+            
+            
+        }) { error in
+            callback(nil)
+        }
+    }
+    
     func stop(handle: UInt) {
         Database.database().reference().removeObserver(withHandle: handle)
     }

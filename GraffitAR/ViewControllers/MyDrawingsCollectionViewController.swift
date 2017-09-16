@@ -51,7 +51,7 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as GalleryItemCell
-        cell.grafitti = myDrawings[indexPath.item]
+        cell.graffiti = myDrawings[indexPath.item]
         return cell
     }
     

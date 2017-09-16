@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,32 +13,76 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryItemCell" id="gTV-IL-0wX" customClass="GalleryItemCell" customModule="GraffitAR" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="304" height="171"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                <rect key="frame" x="0.0" y="0.0" width="304" height="171"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0qQ-Lo-iHc">
-                        <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="304" height="171"/>
                     </imageView>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4w-rN-NA6">
+                        <rect key="frame" x="0.0" y="128" width="304" height="43"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1KT-oz-V0N">
+                            <rect key="frame" x="0.0" y="0.0" width="304" height="43"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ou1-YU-B2s">
+                                    <rect key="frame" x="0.0" y="76" width="304" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="GkE-hd-sfy">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <vibrancyEffect>
+                                        <blurEffect style="light"/>
+                                    </vibrancyEffect>
+                                </visualEffectView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist : Shawn Gong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brI-au-C83">
+                                    <rect key="frame" x="144" y="4" width="152" height="43"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="brI-au-C83" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1KT-oz-V0N" secondAttribute="leading" constant="12" id="XMy-2a-izr"/>
+                                <constraint firstAttribute="trailing" secondItem="brI-au-C83" secondAttribute="trailing" constant="8" id="b9C-8D-M8Q"/>
+                                <constraint firstItem="brI-au-C83" firstAttribute="top" secondItem="1KT-oz-V0N" secondAttribute="top" constant="4" id="n7T-2q-XdJ"/>
+                            </constraints>
+                        </view>
+                        <constraints>
+                            <constraint firstAttribute="height" secondItem="brI-au-C83" secondAttribute="height" id="7JC-Gu-KwQ"/>
+                            <constraint firstAttribute="bottom" secondItem="brI-au-C83" secondAttribute="bottom" constant="-4" id="y04-ld-huJ"/>
+                        </constraints>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="d4w-rN-NA6" firstAttribute="leading" secondItem="0qQ-Lo-iHc" secondAttribute="leading" id="3JV-Ur-UT6"/>
+                <constraint firstItem="d4w-rN-NA6" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="3yq-1v-ANg"/>
                 <constraint firstItem="0qQ-Lo-iHc" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="EJv-jI-tUK"/>
+                <constraint firstItem="d4w-rN-NA6" firstAttribute="height" relation="greaterThanOrEqual" secondItem="0qQ-Lo-iHc" secondAttribute="height" multiplier="0.25" id="JuD-k4-B7I"/>
+                <constraint firstItem="d4w-rN-NA6" firstAttribute="trailing" secondItem="0qQ-Lo-iHc" secondAttribute="trailing" id="QVF-uU-YJQ"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="XNt-Nc-ulI"/>
                 <constraint firstItem="0qQ-Lo-iHc" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="cOK-5G-n1X"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="0qQ-Lo-iHc" secondAttribute="trailing" id="rW9-ST-H2C"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="304" height="171"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                     <integer key="value" value="9"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="artist" destination="brI-au-C83" id="S4t-5h-23k"/>
+                <outlet property="blur" destination="d4w-rN-NA6" id="JaQ-0a-gNx"/>
                 <outlet property="imageView" destination="0qQ-Lo-iHc" id="oTZ-BT-S2I"/>
             </connections>
+            <point key="canvasLocation" x="33" y="-2.5"/>
         </collectionViewCell>
     </objects>
 </document>

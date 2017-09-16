@@ -11,13 +11,25 @@ import Firebase
 
 private let reuseIdentifier = "GalleryItemCell"
 
-class GalleryCollectionViewController: UICollectionViewController {
+class GalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var graffitis: [Graffiti] = []
     
+    var drawingRef: UInt!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.registerNib(GalleryItemCell.self)
+        
+        self.drawingRef = DataController.shared.fetchGalleryDrawings(callback:{ [weak self] array in
+            if let array = array {
+                print("I loaded data.")
+                self?.graffitis = array
+                self?.collectionView?.reloadData()
+            } else {
+                print("I don't know what's wrong. fuck")
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,8 +41,27 @@ class GalleryCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as GalleryItemCell
-        cell.imageView.image = nil
+        cell.graffiti = graffitis[indexPath.item]
         return cell
     }
-
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return graffitis.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = floor(self.collectionView!.bounds.width/2) - 32
+        return CGSize(width: itemWidth, height: itemWidth * 9 / 16)
+    }
+    
+    deinit {
+        guard let ref = self.drawingRef else { return }
+        DataController.shared.stop(handle: ref)
+        
+    }
+    
 }

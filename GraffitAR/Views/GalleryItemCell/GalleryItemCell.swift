@@ -12,11 +12,13 @@ import FirebaseStorage
 class GalleryItemCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var blur : UIVisualEffectView!
+    @IBOutlet var artist : UILabel!
     
-    var grafitti: Graffiti! {
+    var graffiti: Graffiti! {
         didSet {
             let storage = Storage.storage()
-            storage.reference(withPath: "graffiti").child(grafitti.imageRef).getData(maxSize: Int64.max) { [weak self] (data, error) in
+            storage.reference(withPath: "graffiti").child(graffiti.imageRef).getData(maxSize: Int64.max) { [weak self] (data, error) in
                 if let data = data {
                     self?.imageView.image = UIImage(data: data)
                 } else {
