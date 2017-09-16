@@ -66,5 +66,9 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
-#DS Store
+# DS Store
 .DS_Store
+
+# CocoaPods
+Pods/
+*.lock
