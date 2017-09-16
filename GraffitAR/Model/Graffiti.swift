@@ -12,5 +12,16 @@ class Graffiti: NSObject, Codable {
     
     var imageRef: String = ""
     
+    var previewImageRef: String = ""
+    
+    var creator: UserID = ""
+    
+    var created: Date = Date()
+    
+    var downloads: Int = 0
+    
+    var isPublished: Bool = false
+    
+    var detail: String = ""
     
 }
