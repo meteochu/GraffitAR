@@ -29,6 +29,7 @@ class VertBrush {
     
     var lastVertUpdateIdx = 0
     var lastIndexUpdateIdx = 0
+    var prevSaveObj: [ String: Any ] = [:]
     
     var prevPerpVec = SCNVector3Zero
     
@@ -156,14 +157,33 @@ class VertBrush {
         lastIndexUpdateIdx = count
     }
 
-    func setPoints ( vert: [Vertex] = [Vertex](), pnts: [SCNVector3] = [SCNVector3](), idces: Array<UInt32> = Array<UInt32>())
+    func setPoints ( vert: [Vertex] = [Vertex](), pnts: [SCNVector3] = [SCNVector3](), idces: Array<UInt32> = Array<UInt32>(), lastVert: Int, lastIndex: Int)
     {
         self.clear()
         objc_sync_enter(self)
         vertices = vert
         points = pnts
         indices = idces
+        lastVertUpdateIdx = lastVert
+        lastIndexUpdateIdx = lastIndex
         objc_sync_exit(self)
+    }
+    
+    func savePoints(){
+        let saveObj: [ String: Any] = ["vertices":vertices,
+                                       "points":points,
+                                       "indices":indices,
+                                       "lastVert":lastVertUpdateIdx,
+                                       "lastIndex":lastIndexUpdateIdx]
+        prevSaveObj = saveObj
+    }
+    
+    func loadPoints(){
+        let pointsData = prevSaveObj
+        
+        self.setPoints(vert: pointsData["vertices"] as! [Vertex]!, pnts: pointsData["points"] as! [SCNVector3]!, idces: pointsData["indices"] as! Array<UInt32>!, lastVert:pointsData["lastVert"] as! Int, lastIndex:pointsData["lastIndex"] as! Int)
+        
+        self.updateBuffers()
     }
     
     func clear() {

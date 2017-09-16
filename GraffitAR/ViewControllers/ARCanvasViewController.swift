@@ -28,6 +28,8 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     var hasSetupPipeline = false
     
+    var loadFromSet: Bool = false;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,8 +72,13 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func didSelectSaveButton(_ sender: UIButton) {
         // save thing...
         print("save hit")
-        vertBrush.clear()
-        vertBrush.setupPipeline(device: sceneView.device!, pixelFormat: self.metalLayer.pixelFormat )
+        if ( self.loadFromSet ) {
+            vertBrush.loadPoints()
+        } else {
+            vertBrush.savePoints()
+            vertBrush.clear()
+        }
+        self.loadFromSet = !self.loadFromSet
     }
     
     @IBAction func didSelectDrawButton(_ sender: UIButton) {
