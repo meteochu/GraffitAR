@@ -15,6 +15,16 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    let vertBrush = VertBrush()
+    var buttonDown = false
+    var addPointButton : UIButton!
+    var frameIdx = 0
+    var splitLine = false
+    var lineRadius : Float = 0.001
+    
+    var metalLayer: CAMetalLayer! = nil
+    var hasSetupPipeline = false
+    
     var isDrawing: Bool = false
     
     var previousPoint: SCNVector3?
@@ -35,6 +45,8 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        metalLayer = self.sceneView.layer as! CAMetalLayer
         
     }
     
@@ -82,23 +94,70 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        guard let pointOfView = sceneView.pointOfView else { return }
-        let mat = pointOfView.transform
-        let dir = SCNVector3(-1 * mat.m31, -1 * mat.m32, -1 * mat.m33)
-        let currentPosition = pointOfView.position + (dir * 0.1)
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
-        if self.isDrawing {
-            glLineWidth(100)
-            if let previousPoint = previousPoint {
-                let line = lineFrom(vector: previousPoint, toVector: currentPosition)
-                let lineNode = SCNNode(geometry: line)
-                lineNode.geometry?.firstMaterial?.diffuse.contents = lineColor
-                sceneView.scene.rootNode.addChildNode(lineNode)
+        if ( isDrawing ) {
+            
+            let pointer = getPointerPosition()
+            if ( pointer.valid ) {
+                
+                if ( vertBrush.points.count == 0 || (vertBrush.points.last! - pointer.pos).length() > 0.001 ) {
+                    
+                    var radius : Float = 0.001
+                    
+                    
+                    if ( splitLine || vertBrush.points.count < 2 ) {
+                        lineRadius = 0.001
+                    } else {
+                        
+                        let i = vertBrush.points.count-1
+                        let p1 = vertBrush.points[i]
+                        let p2 = vertBrush.points[i-1]
+                        
+                        radius = 0.001 + min(0.015, 0.005 * pow( ( p2-p1 ).length() / 0.005, 2))
+                        
+                    }
+                    
+                    lineRadius = lineRadius - (lineRadius - radius)*0.075
+                    vertBrush.addPoint(pointer.pos, radius: lineRadius, splitLine:splitLine)
+                    
+                    if ( splitLine ) { splitLine = false }
+                    
+                }
+                
+            }
+            
+        }
+        
+        if ( frameIdx % 100 == 0 ) {
+            print(vertBrush.points.count, " points")
+        }
+        
+        frameIdx = frameIdx + 1
+        
+        //if ( frameIdx % 2 == 0 ) {
+        vertBrush.updateBuffers()
+        //}
+        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        if ( !hasSetupPipeline ) {
+            // pixelFormat is different if called at viewWillAppear
+            hasSetupPipeline = true
+            vertBrush.setupPipeline(device: sceneView.device!, pixelFormat: self.metalLayer.pixelFormat )
+        }
+        
+        if let commandQueue = self.sceneView?.commandQueue {
+            if let encoder = self.sceneView.currentRenderCommandEncoder {
+                
+                let projMat = float4x4.init((self.sceneView.pointOfView?.camera?.projectionTransform)!)
+                let modelViewMat = float4x4.init((self.sceneView.pointOfView?.worldTransform)!).inverse
+                
+                vertBrush.render(commandQueue, encoder, parentModelViewMatrix: modelViewMat, projectionMatrix: projMat)
+                
             }
         }
-        previousPoint = currentPosition
-        
     }
     
     func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry {
@@ -109,6 +168,20 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         let element = SCNGeometryElement(indices: indices, primitiveType: .line)
         
         return SCNGeometry(sources: [source], elements: [element])
+        
+    }
+    
+    func getPointerPosition() -> (pos : SCNVector3, valid: Bool, camPos : SCNVector3 ) {
+        
+        guard let pointOfView = sceneView.pointOfView else { return (SCNVector3Zero, false, SCNVector3Zero) }
+        guard let currentFrame = sceneView.session.currentFrame else { return (SCNVector3Zero, false, SCNVector3Zero) }
+        
+        let mat = SCNMatrix4.init(currentFrame.camera.transform)
+        let dir = SCNVector3(-1 * mat.m31, -1 * mat.m32, -1 * mat.m33)
+        
+        let currentPosition = pointOfView.position + (dir * 0.12)
+        
+        return (currentPosition, true, pointOfView.position)
         
     }
 }

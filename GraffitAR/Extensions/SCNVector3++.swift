@@ -230,3 +230,20 @@ func SCNVector3Project(vectorToProject: SCNVector3, projectionVector: SCNVector3
     let v: SCNVector3 = projectionVector * scale
     return v
 }
+
+func SCNVector3Rotate(vector: SCNVector3, around: SCNVector3, radians : Float ) -> SCNVector3 {
+    
+    let rm = GLKMatrix3MakeRotation(radians, around.x, around.y, around.z);
+    let v = GLKMatrix3MultiplyVector3(rm, SCNVector3ToGLKVector3(vector))
+    return SCNVector3FromGLKVector3(v)
+    
+}
+
+func SCNVector3ProjectPlane(vector: SCNVector3, planeNormal: SCNVector3 ) -> SCNVector3 {
+    
+    let projection = SCNVector3Project(vectorToProject: vector, projectionVector: planeNormal)
+    
+    return ( vector - projection )
+    
+    
+}

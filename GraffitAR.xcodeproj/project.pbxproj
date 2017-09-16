@@ -27,6 +27,12 @@
 		A1CB9EDD1F6D6E73003AB27B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EDC1F6D6E73003AB27B /* DataController.swift */; };
 		A1ECBC3F1F6CF03200C5C398 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1ECBC3E1F6CF02B00C5C398 /* GoogleService-Info.plist */; };
 		A1ECBC411F6D60A100C5C398 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */; };
+		C8318E281F6DC36C008EC2D2 /* VertBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8318E271F6DC36C008EC2D2 /* VertBrush.swift */; };
+		C8318E2B1F6DC3AB008EC2D2 /* BufferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8318E2A1F6DC3AB008EC2D2 /* BufferProvider.swift */; };
+		C8318E2D1F6DC3D4008EC2D2 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8318E2C1F6DC3D4008EC2D2 /* Light.swift */; };
+		C8318E2F1F6DC3F7008EC2D2 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C8318E2E1F6DC3F7008EC2D2 /* Shaders.metal */; };
+		C8318E311F6DC40F008EC2D2 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8318E301F6DC40F008EC2D2 /* Vertex.swift */; };
+		C8318E331F6DC42E008EC2D2 /* float4x4+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8318E321F6DC42E008EC2D2 /* float4x4+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +59,12 @@
 		A1CB9EDC1F6D6E73003AB27B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A1ECBC3E1F6CF02B00C5C398 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C8318E271F6DC36C008EC2D2 /* VertBrush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertBrush.swift; sourceTree = "<group>"; };
+		C8318E2A1F6DC3AB008EC2D2 /* BufferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferProvider.swift; sourceTree = "<group>"; };
+		C8318E2C1F6DC3D4008EC2D2 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		C8318E2E1F6DC3F7008EC2D2 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		C8318E301F6DC40F008EC2D2 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		C8318E321F6DC42E008EC2D2 /* float4x4+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "float4x4+Extensions.swift"; sourceTree = "<group>"; };
 		CB381A6E6040ED53C6689563 /* Pods-GraffitAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraffitAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GraffitAR/Pods-GraffitAR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +102,7 @@
 		A16A1AFF1F6CE443005BAE58 = {
 			isa = PBXGroup;
 			children = (
+				C8318E291F6DC393008EC2D2 /* Metal */,
 				A16A1B0A1F6CE443005BAE58 /* GraffitAR */,
 				A16A1B091F6CE443005BAE58 /* Products */,
 				341D0DAE69C3854FCEED2181 /* Pods */,
@@ -175,6 +188,7 @@
 				A1CB9EDA1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift */,
 				A16A1B0F1F6CE443005BAE58 /* ARCanvasViewController.swift */,
 				A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */,
+				C8318E271F6DC36C008EC2D2 /* VertBrush.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +207,18 @@
 				A1CB9EDC1F6D6E73003AB27B /* DataController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C8318E291F6DC393008EC2D2 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				C8318E2A1F6DC3AB008EC2D2 /* BufferProvider.swift */,
+				C8318E2C1F6DC3D4008EC2D2 /* Light.swift */,
+				C8318E2E1F6DC3F7008EC2D2 /* Shaders.metal */,
+				C8318E301F6DC40F008EC2D2 /* Vertex.swift */,
+				C8318E321F6DC42E008EC2D2 /* float4x4+Extensions.swift */,
+			);
+			path = Metal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,16 +373,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8318E311F6DC40F008EC2D2 /* Vertex.swift in Sources */,
+				C8318E331F6DC42E008EC2D2 /* float4x4+Extensions.swift in Sources */,
 				A1A4DEB81F6CE7800074C7EC /* OnboardingViewController.swift in Sources */,
 				A16A1B101F6CE443005BAE58 /* ARCanvasViewController.swift in Sources */,
 				A16A1B0C1F6CE443005BAE58 /* AppDelegate.swift in Sources */,
 				A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */,
 				A1CB9EDD1F6D6E73003AB27B /* DataController.swift in Sources */,
 				A1B900611F6DA400005E04A7 /* SCNVector3++.swift in Sources */,
+				C8318E2D1F6DC3D4008EC2D2 /* Light.swift in Sources */,
 				A1ECBC411F6D60A100C5C398 /* SettingsViewController.swift in Sources */,
+				C8318E2F1F6DC3F7008EC2D2 /* Shaders.metal in Sources */,
 				A1CB9ED91F6D670A003AB27B /* User.swift in Sources */,
+				C8318E2B1F6DC3AB008EC2D2 /* BufferProvider.swift in Sources */,
 				A1CB9ED11F6D6660003AB27B /* Graffiti.swift in Sources */,
 				A1A4DEBA1F6CE8FE0074C7EC /* GalleryCollectionViewController.swift in Sources */,
+				C8318E281F6DC36C008EC2D2 /* VertBrush.swift in Sources */,
 				A1CB9ECF1F6D65C5003AB27B /* Reusable.swift in Sources */,
 				A1CB9EDB1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift in Sources */,
 			);
