@@ -9,34 +9,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Onboarding View Controller-->
+        <!--GraffitAR-->
         <scene sceneID="x0z-Ay-DAQ">
             <objects>
                 <viewController id="big-C1-CRl" customClass="OnboardingViewController" customModule="GraffitAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="chF-Hk-yBV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GraffitAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrP-fE-mdI">
-                                <rect key="frame" x="32" y="136" width="335" height="76.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="64"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="3Ov-Bo-aVV" firstAttribute="trailing" secondItem="vrP-fE-mdI" secondAttribute="trailing" constant="8" id="DTw-8S-vas"/>
-                            <constraint firstItem="vrP-fE-mdI" firstAttribute="leading" secondItem="3Ov-Bo-aVV" secondAttribute="leading" constant="32" id="T0u-Id-U3f"/>
-                            <constraint firstItem="vrP-fE-mdI" firstAttribute="top" secondItem="3Ov-Bo-aVV" secondAttribute="top" constant="72" id="thd-ut-i5x"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3Ov-Bo-aVV"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Cfx-Kz-Lhf"/>
+                    <navigationItem key="navigationItem" title="GraffitAR" largeTitleDisplayMode="always" id="Cfx-Kz-Lhf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeG-S7-fyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3809" y="-251"/>
+            <point key="canvasLocation" x="3750" y="1430"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="WyT-oM-Ooe">
@@ -46,6 +33,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="PQm-5V-Yo2">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
@@ -54,7 +42,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSY-dv-VxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="-180"/>
+            <point key="canvasLocation" x="1094" y="622"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="Wmg-d6-F9I">
@@ -76,14 +64,20 @@
                             <outlet property="delegate" destination="cM5-Cr-3My" id="0I1-un-ICQ"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Gallery" id="4LC-2H-DMA"/>
+                    <navigationItem key="navigationItem" title="Gallery" id="4LC-2H-DMA">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="MWI-WM-nfI">
+                            <connections>
+                                <segue destination="BV1-FR-VrT" kind="presentation" id="odK-fA-iga"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="iCu-TW-dvh" kind="presentation" identifier="presentLoginView" id="ojh-RB-qcK"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWu-uY-mRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1901.5999999999999" y="-181.25937031484258"/>
+            <point key="canvasLocation" x="1902" y="621"/>
         </scene>
         <!--My Drawings-->
         <scene sceneID="aRH-4f-KbL">
@@ -101,7 +95,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CP-x0-BSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="501"/>
+            <point key="canvasLocation" x="1094" y="-191"/>
         </scene>
         <!--My Drawings-->
         <scene sceneID="Hgk-n3-7dV">
@@ -127,15 +121,16 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Vc-Fl-mQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1901.5999999999999" y="500.59970014992507"/>
+            <point key="canvasLocation" x="1902" y="-192"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mDa-Jc-Xay">
             <objects>
                 <navigationController id="iCu-TW-dvh" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OSE-Q9-Aca">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="OSE-Q9-Aca">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="big-C1-CRl" kind="relationship" relationship="rootViewController" id="FGA-Yy-y4r"/>
@@ -143,24 +138,57 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a66-KN-9uQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2945" y="-251"/>
+            <point key="canvasLocation" x="2886" y="1430"/>
         </scene>
         <!--AR-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="GraffitAR" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
+                <viewController id="BV1-FR-VrT" customClass="ARCanvasViewController" customModule="GraffitAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7CZ-CA-xhJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uB-cn-1i9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLD-Ie-v0K">
+                                <rect key="frame" x="307" y="52" width="36" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didSelectSaveButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yv0-Yi-JY7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2Z-vq-SfX">
+                                <rect key="frame" x="168.5" y="573" width="37" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Draw"/>
+                                <connections>
+                                    <action selector="didSelectDrawButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="CIu-Ar-og2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7hv-W9-moh" firstAttribute="bottom" secondItem="7uB-cn-1i9" secondAttribute="bottom" id="5Aa-6P-uFv"/>
+                            <constraint firstItem="SLD-Ie-v0K" firstAttribute="top" secondItem="7uB-cn-1i9" secondAttribute="top" constant="32" id="Xas-OA-496"/>
+                            <constraint firstItem="7uB-cn-1i9" firstAttribute="leading" secondItem="7hv-W9-moh" secondAttribute="leading" id="dDC-s5-n7b"/>
+                            <constraint firstItem="7uB-cn-1i9" firstAttribute="top" secondItem="7hv-W9-moh" secondAttribute="top" id="gHd-JI-66D"/>
+                            <constraint firstItem="P2Z-vq-SfX" firstAttribute="bottom" secondItem="7uB-cn-1i9" secondAttribute="bottom" constant="-64" id="hWY-Me-kLY"/>
+                            <constraint firstItem="7hv-W9-moh" firstAttribute="trailing" secondItem="7uB-cn-1i9" secondAttribute="trailing" id="jBo-Ow-zoD"/>
+                            <constraint firstItem="P2Z-vq-SfX" firstAttribute="centerX" secondItem="7uB-cn-1i9" secondAttribute="centerX" id="nfR-Bs-Low"/>
+                            <constraint firstItem="7uB-cn-1i9" firstAttribute="trailing" secondItem="SLD-Ie-v0K" secondAttribute="trailing" constant="32" id="ymB-fh-Whs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7hv-W9-moh"/>
+                    </view>
                     <tabBarItem key="tabBarItem" title="AR" id="AJf-Fa-8HN"/>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="sceneView" destination="7uB-cn-1i9" id="Unk-XI-GTW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="1191"/>
+            <point key="canvasLocation" x="2886" y="621"/>
         </scene>
         <!--More-->
         <scene sceneID="yYs-9S-qrG">
@@ -226,7 +254,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8k6-jh-AFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="1992"/>
+            <point key="canvasLocation" x="1902" y="1430"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DHq-T2-f7S">
@@ -244,7 +272,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hce-5G-9DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="1992"/>
+            <point key="canvasLocation" x="1094" y="1430"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AYg-8X-pR9">
@@ -258,7 +286,6 @@
                     <connections>
                         <segue destination="KwX-Mg-bbc" kind="relationship" relationship="viewControllers" id="AkT-SD-Zve"/>
                         <segue destination="w5j-LC-lkw" kind="relationship" relationship="viewControllers" id="eZX-Rx-5Cx"/>
-                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="6Ae-sl-X0r"/>
                         <segue destination="fCS-4l-3Ds" kind="relationship" relationship="viewControllers" id="E1K-1r-0iy"/>
                     </connections>
                 </tabBarController>

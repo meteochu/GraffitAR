@@ -10,12 +10,14 @@
 		271BED722746B0E19798A40D /* Pods_GraffitAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3685F44DD18DED714FC10037 /* Pods_GraffitAR.framework */; };
 		A16A1B0C1F6CE443005BAE58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A1B0B1F6CE443005BAE58 /* AppDelegate.swift */; };
 		A16A1B0E1F6CE443005BAE58 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B0D1F6CE443005BAE58 /* art.scnassets */; };
-		A16A1B101F6CE443005BAE58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A1B0F1F6CE443005BAE58 /* ViewController.swift */; };
+		A16A1B101F6CE443005BAE58 /* ARCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A1B0F1F6CE443005BAE58 /* ARCanvasViewController.swift */; };
 		A16A1B131F6CE443005BAE58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B111F6CE443005BAE58 /* Main.storyboard */; };
 		A16A1B151F6CE443005BAE58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B141F6CE443005BAE58 /* Assets.xcassets */; };
 		A16A1B181F6CE443005BAE58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B161F6CE443005BAE58 /* LaunchScreen.storyboard */; };
 		A1A4DEB81F6CE7800074C7EC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4DEB71F6CE7800074C7EC /* OnboardingViewController.swift */; };
 		A1A4DEBA1F6CE8FE0074C7EC /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4DEB91F6CE8FE0074C7EC /* GalleryCollectionViewController.swift */; };
+		A1B900611F6DA400005E04A7 /* SCNVector3++.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900601F6DA400005E04A7 /* SCNVector3++.swift */; };
+		A1B900661F6DAAC7005E04A7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B900651F6DAAC7005E04A7 /* OpenGLES.framework */; };
 		A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */; };
 		A1CB9ECC1F6D64B7003AB27B /* GalleryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */; };
 		A1CB9ECF1F6D65C5003AB27B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */; };
@@ -33,13 +35,15 @@
 		A16A1B081F6CE443005BAE58 /* GraffitAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraffitAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16A1B0B1F6CE443005BAE58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16A1B0D1F6CE443005BAE58 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		A16A1B0F1F6CE443005BAE58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A16A1B0F1F6CE443005BAE58 /* ARCanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCanvasViewController.swift; sourceTree = "<group>"; };
 		A16A1B121F6CE443005BAE58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A16A1B141F6CE443005BAE58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A16A1B171F6CE443005BAE58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A16A1B191F6CE443005BAE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A4DEB71F6CE7800074C7EC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A1A4DEB91F6CE8FE0074C7EC /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
+		A1B900601F6DA400005E04A7 /* SCNVector3++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3++.swift"; sourceTree = "<group>"; };
+		A1B900651F6DAAC7005E04A7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemCell.swift; sourceTree = "<group>"; };
 		A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryItemCell.xib; sourceTree = "<group>"; };
 		A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B900661F6DAAC7005E04A7 /* OpenGLES.framework in Frameworks */,
 				271BED722746B0E19798A40D /* Pods_GraffitAR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +81,7 @@
 		3E728E9687759646E5C354BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1B900651F6DAAC7005E04A7 /* OpenGLES.framework */,
 				3685F44DD18DED714FC10037 /* Pods_GraffitAR.framework */,
 			);
 			name = Frameworks;
@@ -147,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */,
+				A1B900601F6DA400005E04A7 /* SCNVector3++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -164,9 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				A1A4DEB71F6CE7800074C7EC /* OnboardingViewController.swift */,
-				A16A1B0F1F6CE443005BAE58 /* ViewController.swift */,
 				A1A4DEB91F6CE8FE0074C7EC /* GalleryCollectionViewController.swift */,
 				A1CB9EDA1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift */,
+				A16A1B0F1F6CE443005BAE58 /* ARCanvasViewController.swift */,
 				A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -341,10 +348,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1A4DEB81F6CE7800074C7EC /* OnboardingViewController.swift in Sources */,
-				A16A1B101F6CE443005BAE58 /* ViewController.swift in Sources */,
+				A16A1B101F6CE443005BAE58 /* ARCanvasViewController.swift in Sources */,
 				A16A1B0C1F6CE443005BAE58 /* AppDelegate.swift in Sources */,
 				A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */,
 				A1CB9EDD1F6D6E73003AB27B /* DataController.swift in Sources */,
+				A1B900611F6DA400005E04A7 /* SCNVector3++.swift in Sources */,
 				A1ECBC411F6D60A100C5C398 /* SettingsViewController.swift in Sources */,
 				A1CB9ED91F6D670A003AB27B /* User.swift in Sources */,
 				A1CB9ED11F6D6660003AB27B /* Graffiti.swift in Sources */,
