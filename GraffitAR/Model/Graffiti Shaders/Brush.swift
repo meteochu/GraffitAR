@@ -33,9 +33,9 @@ class VertBrush {
     
     var prevPerpVec = SCNVector3Zero
     
-    var light = Light(color: (1.0,1.0,1.0), ambientIntensity: 0.1,
-                      direction: (0.0, 0.0, 1.0), diffuseIntensity: 0.8,
-                      shininess: 10, specularIntensity: 2, time: 0.0)
+    var light = Light(color: (0, 0, 1.0), ambientIntensity: 0,
+                      direction: (0.0, 0.0, 1.0), diffuseIntensity: 1,
+                      shininess: 10, specularIntensity: 0, time: 0.0)
     
     func addPoint( _ point : SCNVector3 , radius : Float = 0.01, splitLine : Bool = false ) {
         
@@ -67,7 +67,7 @@ class VertBrush {
         
         var v2 = SCNVector3Zero
         
-        if ( SCNVector3EqualToVector3(prevPerpVec, SCNVector3Zero) ) {
+        if SCNVector3EqualToVector3(prevPerpVec, SCNVector3Zero) {
             v2 = v1.cross(vector: SCNVector3(1.0, 1.0, 1.0)).normalized() * radius
         } else {
             v2 = SCNVector3ProjectPlane(vector: prevPerpVec, planeNormal: v1.normalized() ).normalized() * radius
@@ -76,19 +76,17 @@ class VertBrush {
         prevPerpVec = v2
         
         // add p2 verts only if this is 2nd point
-        if ( points.count == 2 || previousSplitLine ) {
+        if points.count == 2 || previousSplitLine {
             previousSplitLine = false
             
             for i in 0..<vertsPerPoint {
-                
                 let angle = (Float(i) / Float(vertsPerPoint)) * Float.pi * 2.0
                 let v3 = SCNVector3Rotate(vector:v2, around:v1, radians:angle)
                 vertices.append(toVert(p2 + v3, v3.normalized()))
-                
             }
         }
         
-        let idx_start : UInt32 = UInt32(vertices.count)
+        let idx_start = UInt32(vertices.count)
         
         // add current point's verts
         for i in 0..<vertsPerPoint {
@@ -113,12 +111,11 @@ class VertBrush {
                 indices.append( idx )
                 indices.append( idx_start - N )
                 indices.append( idx_start )
-                
             } else {
                 indices.append( idx )
                 indices.append( idx - N )
                 indices.append( idx - N + 1 )
-                
+
                 indices.append( idx )
                 indices.append( idx - N + 1 )
                 indices.append( idx + 1 )
@@ -206,16 +203,12 @@ class VertBrush {
         renderEncoder.setRenderPipelineState(pipelineState)
         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         
-        light.time = light.time + 0.1
-        
         let uniformBuffer = bufferProvider.nextUniformsBuffer(projectionMatrix,
                                                               modelViewMatrix: parentModelViewMatrix,
                                                               light: light)
         
         renderEncoder.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
         renderEncoder.setFragmentBuffer(uniformBuffer, offset: 0, index: 1)
-        
-        //renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertexCount)
         
         renderEncoder.drawIndexedPrimitives(type: .triangle,
                                             indexCount: indices.count,

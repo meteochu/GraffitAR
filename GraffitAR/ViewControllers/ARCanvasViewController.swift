@@ -139,20 +139,17 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
         
-        if ( !hasSetupPipeline ) {
+        if !hasSetupPipeline {
             // pixelFormat is different if called at viewWillAppear
             hasSetupPipeline = true
-            vertBrush.setupPipeline(device: sceneView.device!, pixelFormat: self.metalLayer.pixelFormat )
+            vertBrush.setupPipeline(device: sceneView.device!, pixelFormat: self.metalLayer.pixelFormat)
         }
         
         if let commandQueue = self.sceneView?.commandQueue {
             if let encoder = self.sceneView.currentRenderCommandEncoder {
-                
-                let projMat = float4x4.init((self.sceneView.pointOfView?.camera?.projectionTransform)!)
-                let modelViewMat = float4x4.init((self.sceneView.pointOfView?.worldTransform)!).inverse
-                
-                vertBrush.render(commandQueue, encoder, parentModelViewMatrix: modelViewMat, projectionMatrix: projMat)
-                
+                let projMat = float4x4(self.sceneView.pointOfView!.camera!.projectionTransform)
+                let modelViewMat = float4x4(self.sceneView.pointOfView!.worldTransform).inverse
+                vertBrush.render(commandQueue, encoder, parentModelViewMatrix: modelViewMat, projectionMatrix: projMat)     
             }
         }
         
