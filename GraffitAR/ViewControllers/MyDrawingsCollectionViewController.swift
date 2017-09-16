@@ -55,7 +55,8 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = floor(self.collectionView!.bounds.width/3)
+        let numPerRow = self.traitCollection.horizontalSizeClass == .compact ? 2 : 3
+        let itemWidth = floor(self.collectionView!.bounds.width/CGFloat(numPerRow)) - CGFloat(8 * numPerRow)
         return CGSize(width: itemWidth, height: itemWidth * 9 / 16)
     }
 
