@@ -32,7 +32,6 @@ class VertBrush {
     
     var prevPerpVec = SCNVector3Zero
     
-    
     var light = Light(color: (1.0,1.0,1.0), ambientIntensity: 0.1,
                       direction: (0.0, 0.0, 1.0), diffuseIntensity: 0.8,
                       shininess: 10, specularIntensity: 2, time: 0.0)
@@ -156,14 +155,24 @@ class VertBrush {
         memcpy(bufferPointer + offset, &indices+lastIndexUpdateIdx, dataSize)
         lastIndexUpdateIdx = count
     }
-    
-    
+
+    func setPoints ( vert: [Vertex] = [Vertex](), pnts: [SCNVector3] = [SCNVector3](), idces: Array<UInt32> = Array<UInt32>())
+    {
+        self.clear()
+        objc_sync_enter(self)
+        vertices = vert
+        points = pnts
+        indices = idces
+        objc_sync_exit(self)
+    }
     
     func clear() {
         objc_sync_enter(self)
         vertices.removeAll()
         indices.removeAll()
         points.removeAll()
+        lastVertUpdateIdx = 0
+        lastIndexUpdateIdx = 0
         objc_sync_exit(self)
     }
     

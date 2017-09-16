@@ -69,7 +69,9 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func didSelectSaveButton(_ sender: UIButton) {
         // save thing...
-        
+        print("save hit")
+        vertBrush.clear()
+        vertBrush.setupPipeline(device: sceneView.device!, pixelFormat: self.metalLayer.pixelFormat )
     }
     
     @IBAction func didSelectDrawButton(_ sender: UIButton) {
