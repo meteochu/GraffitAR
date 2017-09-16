@@ -7,15 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271BED722746B0E19798A40D /* Pods_GraffitAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3685F44DD18DED714FC10037 /* Pods_GraffitAR.framework */; };
 		A16A1B0C1F6CE443005BAE58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A1B0B1F6CE443005BAE58 /* AppDelegate.swift */; };
 		A16A1B0E1F6CE443005BAE58 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B0D1F6CE443005BAE58 /* art.scnassets */; };
 		A16A1B101F6CE443005BAE58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A1B0F1F6CE443005BAE58 /* ViewController.swift */; };
 		A16A1B131F6CE443005BAE58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B111F6CE443005BAE58 /* Main.storyboard */; };
 		A16A1B151F6CE443005BAE58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B141F6CE443005BAE58 /* Assets.xcassets */; };
 		A16A1B181F6CE443005BAE58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A16A1B161F6CE443005BAE58 /* LaunchScreen.storyboard */; };
+		A1A4DEB81F6CE7800074C7EC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4DEB71F6CE7800074C7EC /* OnboardingViewController.swift */; };
+		A1A4DEBA1F6CE8FE0074C7EC /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4DEB91F6CE8FE0074C7EC /* GalleryCollectionViewController.swift */; };
+		A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */; };
+		A1CB9ECC1F6D64B7003AB27B /* GalleryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */; };
+		A1CB9ECF1F6D65C5003AB27B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */; };
+		A1CB9ED11F6D6660003AB27B /* Graffiti.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9ED01F6D6660003AB27B /* Graffiti.swift */; };
+		A1CB9ED91F6D670A003AB27B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9ED81F6D670A003AB27B /* User.swift */; };
+		A1CB9EDB1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EDA1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift */; };
+		A1CB9EDD1F6D6E73003AB27B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EDC1F6D6E73003AB27B /* DataController.swift */; };
+		A1ECBC3F1F6CF03200C5C398 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1ECBC3E1F6CF02B00C5C398 /* GoogleService-Info.plist */; };
+		A1ECBC411F6D60A100C5C398 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3685F44DD18DED714FC10037 /* Pods_GraffitAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraffitAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4238DCF320D5A9794575DBC5 /* Pods-GraffitAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraffitAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-GraffitAR/Pods-GraffitAR.release.xcconfig"; sourceTree = "<group>"; };
 		A16A1B081F6CE443005BAE58 /* GraffitAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraffitAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16A1B0B1F6CE443005BAE58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16A1B0D1F6CE443005BAE58 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -24,6 +38,18 @@
 		A16A1B141F6CE443005BAE58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A16A1B171F6CE443005BAE58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A16A1B191F6CE443005BAE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1A4DEB71F6CE7800074C7EC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		A1A4DEB91F6CE8FE0074C7EC /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
+		A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemCell.swift; sourceTree = "<group>"; };
+		A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryItemCell.xib; sourceTree = "<group>"; };
+		A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		A1CB9ED01F6D6660003AB27B /* Graffiti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graffiti.swift; sourceTree = "<group>"; };
+		A1CB9ED81F6D670A003AB27B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A1CB9EDA1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDrawingsCollectionViewController.swift; sourceTree = "<group>"; };
+		A1CB9EDC1F6D6E73003AB27B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		A1ECBC3E1F6CF02B00C5C398 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CB381A6E6040ED53C6689563 /* Pods-GraffitAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraffitAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GraffitAR/Pods-GraffitAR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271BED722746B0E19798A40D /* Pods_GraffitAR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		341D0DAE69C3854FCEED2181 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB381A6E6040ED53C6689563 /* Pods-GraffitAR.debug.xcconfig */,
+				4238DCF320D5A9794575DBC5 /* Pods-GraffitAR.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E728E9687759646E5C354BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3685F44DD18DED714FC10037 /* Pods_GraffitAR.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A16A1AFF1F6CE443005BAE58 = {
 			isa = PBXGroup;
 			children = (
 				A16A1B0A1F6CE443005BAE58 /* GraffitAR */,
 				A16A1B091F6CE443005BAE58 /* Products */,
+				341D0DAE69C3854FCEED2181 /* Pods */,
+				3E728E9687759646E5C354BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,7 +103,11 @@
 			isa = PBXGroup;
 			children = (
 				A16A1B0B1F6CE443005BAE58 /* AppDelegate.swift */,
-				A16A1B0F1F6CE443005BAE58 /* ViewController.swift */,
+				A1CB9ED21F6D6663003AB27B /* Model */,
+				A1CB9EDE1F6D6E76003AB27B /* Controller */,
+				A1CB9ED51F6D6679003AB27B /* Views */,
+				A1CB9ED61F6D6680003AB27B /* ViewControllers */,
+				A1CB9ED41F6D666F003AB27B /* Extensions */,
 				A1A4DEB61F6CE4620074C7EC /* Supporting Files */,
 			);
 			path = GraffitAR;
@@ -67,12 +117,75 @@
 			isa = PBXGroup;
 			children = (
 				A16A1B0D1F6CE443005BAE58 /* art.scnassets */,
-				A16A1B111F6CE443005BAE58 /* Main.storyboard */,
 				A16A1B141F6CE443005BAE58 /* Assets.xcassets */,
 				A16A1B161F6CE443005BAE58 /* LaunchScreen.storyboard */,
 				A16A1B191F6CE443005BAE58 /* Info.plist */,
+				A1ECBC3E1F6CF02B00C5C398 /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1CB9ECD1F6D64BD003AB27B /* GalleryItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */,
+				A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */,
+			);
+			path = GalleryItemCell;
+			sourceTree = "<group>";
+		};
+		A1CB9ED21F6D6663003AB27B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1CB9ED01F6D6660003AB27B /* Graffiti.swift */,
+				A1CB9ED81F6D670A003AB27B /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A1CB9ED41F6D666F003AB27B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A1CB9ED51F6D6679003AB27B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1CB9ED71F6D668C003AB27B /* Storyboard */,
+				A1CB9ECD1F6D64BD003AB27B /* GalleryItemCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1CB9ED61F6D6680003AB27B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A1A4DEB71F6CE7800074C7EC /* OnboardingViewController.swift */,
+				A16A1B0F1F6CE443005BAE58 /* ViewController.swift */,
+				A1A4DEB91F6CE8FE0074C7EC /* GalleryCollectionViewController.swift */,
+				A1CB9EDA1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift */,
+				A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A1CB9ED71F6D668C003AB27B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A16A1B111F6CE443005BAE58 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A1CB9EDE1F6D6E76003AB27B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A1CB9EDC1F6D6E73003AB27B /* DataController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A16A1B1C1F6CE443005BAE58 /* Build configuration list for PBXNativeTarget "GraffitAR" */;
 			buildPhases = (
+				64AB552A1106685822BC394F /* [CP] Check Pods Manifest.lock */,
 				A16A1B041F6CE443005BAE58 /* Sources */,
 				A16A1B051F6CE443005BAE58 /* Frameworks */,
 				A16A1B061F6CE443005BAE58 /* Resources */,
+				8A43655D555B7F9EB815CDBE /* [CP] Embed Pods Frameworks */,
+				FC4B60DC86466EDE12870A35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,20 +252,105 @@
 			files = (
 				A16A1B0E1F6CE443005BAE58 /* art.scnassets in Resources */,
 				A16A1B181F6CE443005BAE58 /* LaunchScreen.storyboard in Resources */,
+				A1ECBC3F1F6CF03200C5C398 /* GoogleService-Info.plist in Resources */,
 				A16A1B151F6CE443005BAE58 /* Assets.xcassets in Resources */,
 				A16A1B131F6CE443005BAE58 /* Main.storyboard in Resources */,
+				A1CB9ECC1F6D64B7003AB27B /* GalleryItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64AB552A1106685822BC394F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GraffitAR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A43655D555B7F9EB815CDBE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GraffitAR/Pods-GraffitAR-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GraffitAR/Pods-GraffitAR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC4B60DC86466EDE12870A35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GraffitAR/Pods-GraffitAR-resources.sh",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GraffitAR/Pods-GraffitAR-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A16A1B041F6CE443005BAE58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A4DEB81F6CE7800074C7EC /* OnboardingViewController.swift in Sources */,
 				A16A1B101F6CE443005BAE58 /* ViewController.swift in Sources */,
 				A16A1B0C1F6CE443005BAE58 /* AppDelegate.swift in Sources */,
+				A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */,
+				A1CB9EDD1F6D6E73003AB27B /* DataController.swift in Sources */,
+				A1ECBC411F6D60A100C5C398 /* SettingsViewController.swift in Sources */,
+				A1CB9ED91F6D670A003AB27B /* User.swift in Sources */,
+				A1CB9ED11F6D6660003AB27B /* Graffiti.swift in Sources */,
+				A1A4DEBA1F6CE8FE0074C7EC /* GalleryCollectionViewController.swift in Sources */,
+				A1CB9ECF1F6D65C5003AB27B /* Reusable.swift in Sources */,
+				A1CB9EDB1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,9 +485,11 @@
 		};
 		A16A1B1D1F6CE443005BAE58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB381A6E6040ED53C6689563 /* Pods-GraffitAR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TSCXJ4KWQ4;
 				INFOPLIST_FILE = GraffitAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graffitar.GraffitAR;
@@ -298,9 +501,11 @@
 		};
 		A16A1B1E1F6CE443005BAE58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4238DCF320D5A9794575DBC5 /* Pods-GraffitAR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TSCXJ4KWQ4;
 				INFOPLIST_FILE = GraffitAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graffitar.GraffitAR;
