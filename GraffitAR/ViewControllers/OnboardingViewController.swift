@@ -33,8 +33,8 @@ class OnboardingViewController: UIViewController, LoginButtonDelegate {
                     reference.child("id").setValue(user.uid)
                     reference.child("email").setValue(user.email!)
                     reference.child("name").setValue(user.displayName!)
-                    reference.child("drawings").setValue([])
-                    reference.child("favourites").setValue([])
+                    reference.child("drawings").setValue([""])
+                    reference.child("favourites").setValue([""])
                     self?.dismiss(animated: true, completion: nil)
                 } else if let error = error {
                     print(error)

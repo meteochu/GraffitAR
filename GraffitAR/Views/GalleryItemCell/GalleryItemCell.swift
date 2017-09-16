@@ -15,15 +15,20 @@ class GalleryItemCell: UICollectionViewCell {
     @IBOutlet var blur : UIVisualEffectView!
     @IBOutlet var artist : UILabel!
     
+    private var handle: UInt?
+    
     var graffiti: Graffiti! {
         didSet {
-            let storage = Storage.storage()
-            storage.reference(withPath: "graffiti").child(graffiti.imageRef).getData(maxSize: Int64.max) { [weak self] (data, error) in
-                if let data = data {
-                    self?.imageView.image = UIImage(data: data)
-                } else {
-                    print(error ?? "No Error found.")
-                }
+            DataController.shared.fetchGraffitiImage(for: graffiti) { [weak self] image in
+                self?.imageView.image = image
+            }
+            
+            if let user = DataController.shared.users[graffiti.creator] {
+                self.artist.text = user.name
+            } else {
+                self.handle = DataController.shared.fetchUser(graffiti.creator, with: { [weak self] user in
+                    self?.artist.text = user?.name
+                })
             }
         }
     }
@@ -31,6 +36,10 @@ class GalleryItemCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.imageView.image = nil
+        self.artist.text = ""
+        if let handle = handle {
+            DataController.shared.stop(handle: handle)
+        }
     }
 
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 typealias UserID = String
 
@@ -29,6 +30,21 @@ class DataController: NSObject {
         encoder.dateEncodingStrategy = .iso8601
         return encoder
     }()
+    
+    func fetchUser(_ uid: String, with callback: @escaping (User?) -> Void) -> UInt {
+        return Database.database().reference().child("users").child(uid).observe(.value, with: { [weak self] snapshot in
+            guard let object = snapshot.value as? [String: Any], let decoder = self?.decoder else { return callback(nil) }
+            do {
+                let data = try JSONSerialization.data(withJSONObject: object, options: [])
+                let user = try decoder.decode(User.self, from: data)
+                self?.users[user.id] = user
+                callback(user)
+            } catch {
+                print(error)
+                callback(nil)
+            }
+        })
+    }
     
     func fetchDrawings(for user: String, with callback: @escaping ([Graffiti]?) -> Void) -> UInt {
         let reference = Database.database().reference()
@@ -89,6 +105,16 @@ class DataController: NSObject {
             
         }) { error in
             callback(nil)
+        }
+    }
+    
+    func fetchGraffitiImage(for graffiti: Graffiti, with callback: @escaping (UIImage?) -> Void) {
+        Storage.storage().reference(withPath: "graffiti").child(graffiti.imageRef).getData(maxSize: Int64.max) { data, error in
+            if let data = data, let image = UIImage(data: data) {
+                callback(image)
+            } else {
+                callback(nil)
+            }
         }
     }
     

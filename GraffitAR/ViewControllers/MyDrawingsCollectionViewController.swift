@@ -22,7 +22,6 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
         if let uid = Auth.auth().currentUser?.uid {
             self.drawingRef = DataController.shared.fetchDrawings(for: uid, with: { [weak self] array in
                 if let array = array {
-                    print("I loaded data.")
                     self?.myDrawings = array
                     self?.collectionView?.reloadData()
                 } else {
