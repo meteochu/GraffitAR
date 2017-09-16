@@ -74,7 +74,9 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func didSelectDrawButton(_ sender: UIButton) {
         self.isDrawing = !self.isDrawing
-        self.splitLine = !splitLine
+        if ( self.isDrawing ) {
+            self.splitLine = true
+        }
     }
 
     // MARK: - ARSCNViewDelegate
