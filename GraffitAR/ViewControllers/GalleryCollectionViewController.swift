@@ -23,7 +23,6 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         
         self.drawingRef = DataController.shared.fetchGalleryDrawings(callback:{ [weak self] array in
             if let array = array {
-                print("I loaded data.")
                 self?.graffitis = array
                 self?.collectionView?.reloadData()
             } else {
@@ -39,6 +38,9 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         }
     }
     
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.collectionView!.collectionViewLayout.invalidateLayout()
+    }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as GalleryItemCell
         cell.graffiti = graffitis[indexPath.item]
@@ -54,7 +56,8 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = floor(self.collectionView!.bounds.width/2) - 16
+        let numPerRow = self.traitCollection.horizontalSizeClass == .compact ? 2 : 3
+        let itemWidth = floor(self.collectionView!.bounds.width/CGFloat(numPerRow)) - CGFloat(8 * numPerRow)
         return CGSize(width: itemWidth, height: itemWidth * 9 / 16)
     }
     

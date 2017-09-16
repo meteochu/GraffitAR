@@ -35,19 +35,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="43"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Artist : Shawn Gong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brI-au-C83">
-                                                <rect key="frame" x="76" y="4" width="152" height="35"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist : Shawn Gong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brI-au-C83">
+                                                <rect key="frame" x="0.0" y="0.0" width="304" height="42.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="brI-au-C83" firstAttribute="centerX" secondItem="tkO-4M-1Uj" secondAttribute="centerX" id="5Vz-k0-wGn"/>
-                                            <constraint firstItem="brI-au-C83" firstAttribute="width" secondItem="tkO-4M-1Uj" secondAttribute="width" id="7Gw-jj-rQy"/>
-                                            <constraint firstItem="brI-au-C83" firstAttribute="centerY" secondItem="tkO-4M-1Uj" secondAttribute="centerY" id="Q2a-RJ-qmI"/>
-                                            <constraint firstItem="brI-au-C83" firstAttribute="height" secondItem="tkO-4M-1Uj" secondAttribute="height" id="xFW-Ul-EQ0"/>
-                                        </constraints>
                                     </view>
                                     <vibrancyEffect>
                                         <blurEffect style="dark"/>
@@ -60,11 +54,15 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="brI-au-C83" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="7FD-MB-gbC"/>
                 <constraint firstItem="1QC-Xu-Z8c" firstAttribute="leading" secondItem="0qQ-Lo-iHc" secondAttribute="leading" id="7Tt-L5-RvP"/>
                 <constraint firstItem="1QC-Xu-Z8c" firstAttribute="height" secondItem="0qQ-Lo-iHc" secondAttribute="height" multiplier="0.25" id="A07-n1-TxP"/>
                 <constraint firstItem="1QC-Xu-Z8c" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="DYk-yJ-n7w"/>
                 <constraint firstItem="0qQ-Lo-iHc" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="EJv-jI-tUK"/>
+                <constraint firstItem="brI-au-C83" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="J6P-v9-VmN"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="XNt-Nc-ulI"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="brI-au-C83" secondAttribute="trailing" id="Zxy-WK-9B7"/>
+                <constraint firstItem="brI-au-C83" firstAttribute="height" secondItem="0qQ-Lo-iHc" secondAttribute="height" multiplier="0.25" id="cGj-oK-Edy"/>
                 <constraint firstItem="0qQ-Lo-iHc" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="cOK-5G-n1X"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="0qQ-Lo-iHc" secondAttribute="trailing" id="rW9-ST-H2C"/>
                 <constraint firstItem="1QC-Xu-Z8c" firstAttribute="trailing" secondItem="0qQ-Lo-iHc" secondAttribute="trailing" id="tBe-3p-jDI"/>
