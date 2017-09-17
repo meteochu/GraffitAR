@@ -25,6 +25,8 @@
 		A1B900731F6DD0E1005E04A7 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900721F6DD0E1005E04A7 /* Vertex.swift */; };
 		A1B900751F6DD209005E04A7 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900741F6DD209005E04A7 /* Light.swift */; };
 		A1B900771F6DE114005E04A7 /* MyDrawingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900761F6DE114005E04A7 /* MyDrawingDetailViewController.swift */; };
+		A1B9007A1F6E066E005E04A7 /* CreateDrawingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900781F6E066E005E04A7 /* CreateDrawingCell.swift */; };
+		A1B9007B1F6E066E005E04A7 /* CreateDrawingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B900791F6E066E005E04A7 /* CreateDrawingCell.xib */; };
 		A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */; };
 		A1CB9ECC1F6D64B7003AB27B /* GalleryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */; };
 		A1CB9ECF1F6D65C5003AB27B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */; };
@@ -58,6 +60,8 @@
 		A1B900721F6DD0E1005E04A7 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		A1B900741F6DD209005E04A7 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		A1B900761F6DE114005E04A7 /* MyDrawingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyDrawingDetailViewController.swift; path = GraffitAR/ViewControllers/MyDrawingDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		A1B900781F6E066E005E04A7 /* CreateDrawingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateDrawingCell.swift; path = ../CreateDrawingCell/CreateDrawingCell.swift; sourceTree = "<group>"; };
+		A1B900791F6E066E005E04A7 /* CreateDrawingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CreateDrawingCell.xib; path = ../CreateDrawingCell/CreateDrawingCell.xib; sourceTree = "<group>"; };
 		A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemCell.swift; sourceTree = "<group>"; };
 		A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryItemCell.xib; sourceTree = "<group>"; };
 		A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -157,6 +161,16 @@
 			path = "Graffiti Shaders";
 			sourceTree = "<group>";
 		};
+		A1B9007C1F6E0677005E04A7 /* CreateDrawingCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1B900781F6E066E005E04A7 /* CreateDrawingCell.swift */,
+				A1B900791F6E066E005E04A7 /* CreateDrawingCell.xib */,
+			);
+			name = CreateDrawingCell;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		A1CB9ECD1F6D64BD003AB27B /* GalleryItemCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CB9ED71F6D668C003AB27B /* Storyboard */,
+				A1B9007C1F6E0677005E04A7 /* CreateDrawingCell */,
 				A1CB9ECD1F6D64BD003AB27B /* GalleryItemCell */,
 			);
 			path = Views;
@@ -288,6 +303,7 @@
 			files = (
 				A16A1B0E1F6CE443005BAE58 /* art.scnassets in Resources */,
 				A16A1B181F6CE443005BAE58 /* LaunchScreen.storyboard in Resources */,
+				A1B9007B1F6E066E005E04A7 /* CreateDrawingCell.xib in Resources */,
 				A1ECBC3F1F6CF03200C5C398 /* GoogleService-Info.plist in Resources */,
 				A16A1B151F6CE443005BAE58 /* Assets.xcassets in Resources */,
 				A16A1B131F6CE443005BAE58 /* Main.storyboard in Resources */,
@@ -382,6 +398,7 @@
 				A16A1B101F6CE443005BAE58 /* ARCanvasViewController.swift in Sources */,
 				A1B9006C1F6DCAC8005E04A7 /* Brush.swift in Sources */,
 				A16A1B0C1F6CE443005BAE58 /* AppDelegate.swift in Sources */,
+				A1B9007A1F6E066E005E04A7 /* CreateDrawingCell.swift in Sources */,
 				A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */,
 				A1CB9EDD1F6D6E73003AB27B /* DataController.swift in Sources */,
 				A1B900611F6DA400005E04A7 /* SCNVector3++.swift in Sources */,

@@ -43,7 +43,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSY-dv-VxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="622"/>
+            <point key="canvasLocation" x="1094" y="-191"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="Wmg-d6-F9I">
@@ -65,13 +65,7 @@
                             <outlet property="delegate" destination="cM5-Cr-3My" id="0I1-un-ICQ"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Gallery" id="4LC-2H-DMA">
-                        <barButtonItem key="rightBarButtonItem" title="New" id="MWI-WM-nfI">
-                            <connections>
-                                <segue destination="BV1-FR-VrT" kind="presentation" id="odK-fA-iga"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Gallery" id="4LC-2H-DMA"/>
                     <connections>
                         <segue destination="iCu-TW-dvh" kind="presentation" identifier="presentLoginView" id="ojh-RB-qcK"/>
                         <segue destination="nHx-vm-gds" kind="show" identifier="showDrawingDetail" id="l3n-I1-8is"/>
@@ -79,7 +73,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWu-uY-mRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="621"/>
+            <point key="canvasLocation" x="1902" y="-192"/>
         </scene>
         <!--My Drawings-->
         <scene sceneID="aRH-4f-KbL">
@@ -98,7 +92,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CP-x0-BSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="-191"/>
+            <point key="canvasLocation" x="1094" y="620"/>
         </scene>
         <!--My Drawings-->
         <scene sceneID="Hgk-n3-7dV">
@@ -123,11 +117,12 @@
                     <navigationItem key="navigationItem" title="My Drawings" id="b7I-Cb-Leo"/>
                     <connections>
                         <segue destination="nHx-vm-gds" kind="show" identifier="showDrawingDetail" id="Y5K-Pc-mRC"/>
+                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="openARCanvas" id="F0m-kD-ahg"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Vc-Fl-mQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="-192"/>
+            <point key="canvasLocation" x="1902" y="620"/>
         </scene>
         <!--Detail-->
         <scene sceneID="ugB-2l-hQW">
@@ -277,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2886" y="621"/>
+            <point key="canvasLocation" x="3244" y="619"/>
         </scene>
         <!--More-->
         <scene sceneID="yYs-9S-qrG">
@@ -390,6 +385,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ojh-RB-qcK"/>
-        <segue reference="l3n-I1-8is"/>
+        <segue reference="Y5K-Pc-mRC"/>
     </inferredMetricsTieBreakers>
 </document>
