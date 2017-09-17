@@ -30,7 +30,7 @@
         <scene sceneID="WyT-oM-Ooe">
             <objects>
                 <navigationController id="KwX-Mg-bbc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gallery" id="Pn4-X9-Gcs"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" image="Photo" id="Pn4-X9-Gcs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="PQm-5V-Yo2">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -74,6 +74,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="iCu-TW-dvh" kind="presentation" identifier="presentLoginView" id="ojh-RB-qcK"/>
+                        <segue destination="nHx-vm-gds" kind="show" identifier="showDrawingDetail" id="l3n-I1-8is"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWu-uY-mRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -84,7 +85,7 @@
         <scene sceneID="aRH-4f-KbL">
             <objects>
                 <navigationController id="w5j-LC-lkw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Drawings" id="bwx-MY-pOR"/>
+                    <tabBarItem key="tabBarItem" title="My Drawings" image="Paintbrush" id="bwx-MY-pOR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="N3G-Xw-bdf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -383,9 +384,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Paintbrush" width="36" height="36"/>
+        <image name="Photo" width="36" height="36"/>
         <image name="Star-Bordered" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ojh-RB-qcK"/>
+        <segue reference="l3n-I1-8is"/>
     </inferredMetricsTieBreakers>
 </document>

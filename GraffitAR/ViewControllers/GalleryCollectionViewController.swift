@@ -17,6 +17,8 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     
     var drawingRef: UInt!
     
+    var selectedIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.registerNib(GalleryItemCell.self)
@@ -55,6 +57,12 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         return graffitis.count
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        selectedIndex = indexPath.item
+        self.performSegue(withIdentifier: "showDrawingDetail", sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numPerRow = self.traitCollection.horizontalSizeClass == .compact ? 2 : 3
         let itemWidth = floor(self.collectionView!.bounds.width/CGFloat(numPerRow)) - CGFloat(8 * numPerRow)
@@ -64,7 +72,12 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     deinit {
         guard let ref = self.drawingRef else { return }
         DataController.shared.stop(handle: ref)
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? MyDrawingDetailViewController {
+            controller.graffiti = self.graffitis[selectedIndex]
+        }
     }
     
 }
