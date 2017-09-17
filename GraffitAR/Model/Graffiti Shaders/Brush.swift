@@ -176,6 +176,7 @@ class VertBrush {
                                        "lastVert":lastVertUpdateIdx,
                                        "lastIndex":lastIndexUpdateIdx]
         prevSaveObj = saveObj
+        
     }
     
     func loadPoints(){

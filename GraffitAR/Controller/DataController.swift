@@ -83,6 +83,13 @@ class DataController: NSObject {
         }
     }
     
+    func uploadGraffiti(saveObj:[ String: Any]!, name:String! = "", creator:UserID?, isPublished:Bool = false, detail:String! = "", downloads:Int, imageRef:UIImage) {
+        let reference = Database.database().reference()
+        let newGraffiti:Graffiti = new Graffiti()
+        reference.child("graffiti")
+        
+    }
+    
     func fetchGalleryDrawings(callback: @escaping ([Graffiti]?) -> Void) -> UInt {
         let reference = Database.database().reference()
         return reference.child("graffiti").observe(.value, with: { [weak self] snapshot  in

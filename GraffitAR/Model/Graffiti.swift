@@ -10,6 +10,16 @@ import Foundation
 
 class Graffiti: NSObject, Codable {
     
+    init(imageRef: String, creator: UserID, created: Date, downloads:Int, isPublished:Bool, detail:String) {
+        super.init()
+        self.imageRef = imageRef
+        self.creator = creator
+        self.created = created
+        self.downloads = downloads
+        self.isPublished = isPublished
+        self.detail = detail
+    }
+    
     var imageRef: String = ""
     
     var previewImageRef: String = ""

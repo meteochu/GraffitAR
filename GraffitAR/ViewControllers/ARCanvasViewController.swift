@@ -72,6 +72,7 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func didSelectSaveButton(_ sender: UIButton) {
         // save thing...
         print("save hit")
+        
         if ( self.loadFromSet ) {
             vertBrush.loadPoints()
         } else {
