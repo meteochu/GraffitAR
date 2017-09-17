@@ -11,9 +11,11 @@ import FirebaseStorage
 
 class GalleryItemCell: UICollectionViewCell {
     
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var favouriteIcon: UIImageView!
     
     private var handle: UInt?
     
@@ -21,6 +23,10 @@ class GalleryItemCell: UICollectionViewCell {
         didSet {
             DataController.shared.fetchGraffitiImage(for: graffiti) { [weak self] image in
                 self?.imageView.image = image
+            }
+            
+            if let user = DataController.shared.users[graffiti.creator] {
+                favouriteIcon.isHidden = !user.favourites.contains(graffiti.id)
             }
             
             if !graffiti.name.isEmpty {
@@ -43,6 +49,9 @@ class GalleryItemCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 12
         layer.masksToBounds = false
+        favouriteIcon.image = #imageLiteral(resourceName: "Star").withRenderingMode(.alwaysTemplate)
+        favouriteIcon.tintColor = UIColor.orange
+        favouriteIcon.isHidden = true
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowRadius = 4

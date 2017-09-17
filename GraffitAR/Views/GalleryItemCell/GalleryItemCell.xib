@@ -51,6 +51,14 @@
                         </view>
                         <blurEffect style="dark"/>
                     </visualEffectView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="Zue-bp-GbK">
+                        <rect key="frame" x="8" y="137.5" width="24" height="24"/>
+                        <color key="tintColor" red="1" green="0.61459263392857144" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="5lb-ku-gEI"/>
+                            <constraint firstAttribute="height" constant="24" id="CUi-fV-frv"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -59,6 +67,7 @@
                 <constraint firstItem="1QC-Xu-Z8c" firstAttribute="height" secondItem="0qQ-Lo-iHc" secondAttribute="height" multiplier="0.25" id="A07-n1-TxP"/>
                 <constraint firstItem="1QC-Xu-Z8c" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="DYk-yJ-n7w"/>
                 <constraint firstItem="0qQ-Lo-iHc" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="EJv-jI-tUK"/>
+                <constraint firstItem="Zue-bp-GbK" firstAttribute="leading" secondItem="0qQ-Lo-iHc" secondAttribute="leading" constant="8" id="HA7-tV-iW2"/>
                 <constraint firstItem="brI-au-C83" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="J6P-v9-VmN"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="0qQ-Lo-iHc" secondAttribute="bottom" id="XNt-Nc-ulI"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="brI-au-C83" secondAttribute="trailing" id="Zxy-WK-9B7"/>
@@ -66,6 +75,7 @@
                 <constraint firstItem="0qQ-Lo-iHc" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="cOK-5G-n1X"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="0qQ-Lo-iHc" secondAttribute="trailing" id="rW9-ST-H2C"/>
                 <constraint firstItem="1QC-Xu-Z8c" firstAttribute="trailing" secondItem="0qQ-Lo-iHc" secondAttribute="trailing" id="tBe-3p-jDI"/>
+                <constraint firstItem="Zue-bp-GbK" firstAttribute="centerY" secondItem="brI-au-C83" secondAttribute="centerY" id="ws0-3g-3VR"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="304" height="171"/>
@@ -75,10 +85,14 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="favouriteIcon" destination="Zue-bp-GbK" id="TGu-qP-SlP"/>
                 <outlet property="imageView" destination="0qQ-Lo-iHc" id="oTZ-BT-S2I"/>
                 <outlet property="titleLabel" destination="brI-au-C83" id="Y1a-fQ-3e7"/>
             </connections>
             <point key="canvasLocation" x="33" y="-2.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Star" width="36" height="36"/>
+    </resources>
 </document>

@@ -142,7 +142,9 @@ class MyDrawingDetailViewController: UIViewController {
             self.performSegue(withIdentifier: "editGraffitiSegue", sender: self)
         } else {
             // clone + edit
-            
+            let alertController = UIAlertController(title: "Sorry", message: "This feature has not been implemented", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
