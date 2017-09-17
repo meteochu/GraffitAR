@@ -27,8 +27,6 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
                 if let array = array {
                     self?.myDrawings = array
                     self?.collectionView?.reloadData()
-                } else {
-                    print("I don't know what's wrong. fuck")
                 }
             })
         } else {
