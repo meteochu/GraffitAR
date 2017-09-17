@@ -167,8 +167,7 @@
 				A1B900781F6E066E005E04A7 /* CreateDrawingCell.swift */,
 				A1B900791F6E066E005E04A7 /* CreateDrawingCell.xib */,
 			);
-			name = CreateDrawingCell;
-			path = "New Group";
+			path = CreateDrawingCell;
 			sourceTree = "<group>";
 		};
 		A1CB9ECD1F6D64BD003AB27B /* GalleryItemCell */ = {
