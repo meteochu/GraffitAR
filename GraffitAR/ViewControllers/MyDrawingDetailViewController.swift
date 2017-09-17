@@ -24,6 +24,8 @@ class MyDrawingDetailViewController: UIViewController {
     
     @IBOutlet weak var downloadCountLabel: UILabel!
     
+    @IBOutlet weak var publishButton: UIButton!
+    
     var isFavourited: Bool = false
     
     var handle: UInt!
@@ -64,11 +66,25 @@ class MyDrawingDetailViewController: UIViewController {
                 self?.artistNameLabel.text = user?.name
             }
         }
+        
+        if (graffiti.isPublished) {
+            self.publishButton.setTitle("Published", for: UIControlState.normal)
+            self.publishButton.isEnabled = false
+        } else {
+            self.publishButton.setTitle("Publish", for: UIControlState.normal)
+            self.publishButton.isEnabled = true
+        }
+        
     }
     
     @IBAction func didSelectStarButton(_ sender: UIBarButtonItem) {
         self.isFavourited = !self.isFavourited
         sender.image = self.isFavourited ?  #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star-Bordered")
+    }
+    
+    
+    @IBAction func didSelectPublishButton(_ sender: UIButton) {
+        DataController.shared.publishGraffiti(graffiti: graffiti)
     }
     
     

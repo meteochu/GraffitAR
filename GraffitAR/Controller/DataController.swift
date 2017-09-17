@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import Firebase
 
 typealias UserID = String
 
@@ -107,7 +108,9 @@ class DataController: NSObject {
                 do {
                     let data = try JSONSerialization.data(withJSONObject: id.value, options: [])
                     let graffiti = try decoder.decode(Graffiti.self, from: data)
-                    groups.append(graffiti)
+                    if (graffiti.isPublished) {
+                        groups.append(graffiti)
+                    }
                 } catch {
                     print(error)
                 }
@@ -127,6 +130,15 @@ class DataController: NSObject {
             } else {
                 callback(nil)
             }
+        }
+    }
+    
+    func publishGraffiti(graffiti:Graffiti!) {
+        let uid = Auth.auth().currentUser?.uid
+        let reference = Database.database().reference()
+        if (graffiti.creator == uid && !graffiti.isPublished) {
+            // remove hard code of the id later.
+            reference.child("graffiti").child("KuCT1EmwEisQS8tC04X").child("isPublished").setValue(true)
         }
     }
     

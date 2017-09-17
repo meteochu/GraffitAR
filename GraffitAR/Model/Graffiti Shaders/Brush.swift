@@ -220,7 +220,7 @@ class VertBrush {
         // need to replace this data with legit data.
         let uid = Auth.auth().currentUser?.uid
         
-        DataController.shared.uploadGraffiti(name: "test", imageRef: "1234567890.png", creator: uid, isPublished: false, detail: "", saveObj: saveObj)
+        DataController.shared.uploadGraffiti(name: "asdfjkl", imageRef: "1234567890.png", creator: uid, isPublished: false, detail: "", saveObj: saveObj)
     }
     
     func clear() {
