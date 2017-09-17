@@ -191,7 +191,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v3j-eb-mrv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="h1I-Pm-uvG"/>
+                    <navigationItem key="navigationItem" title="Detail" id="h1I-Pm-uvG">
+                        <barButtonItem key="rightBarButtonItem" image="Star-Bordered" id="ELw-eF-ebJ">
+                            <connections>
+                                <action selector="didSelectStarButton:" destination="nHx-vm-gds" id="DYR-Je-XN0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="artistNameLabel" destination="zkX-Ej-LTl" id="W2x-0L-A1V"/>
                         <outlet property="createdDateLabel" destination="f3m-Z4-0qO" id="JM5-3I-TUd"/>
@@ -376,6 +382,9 @@
             <point key="canvasLocation" x="144" y="888"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Star-Bordered" width="36" height="36"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ojh-RB-qcK"/>
     </inferredMetricsTieBreakers>

@@ -24,6 +24,8 @@ class MyDrawingDetailViewController: UIViewController {
     
     @IBOutlet weak var downloadCountLabel: UILabel!
     
+    var isFavourited: Bool = false
+    
     var handle: UInt!
     
     var graffiti: Graffiti! {
@@ -63,5 +65,11 @@ class MyDrawingDetailViewController: UIViewController {
             }
         }
     }
-
+    
+    @IBAction func didSelectStarButton(_ sender: UIBarButtonItem) {
+        self.isFavourited = !self.isFavourited
+        sender.image = self.isFavourited ?  #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star-Bordered")
+    }
+    
+    
 }
