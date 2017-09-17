@@ -49,6 +49,14 @@ struct GraffitiObject: Codable {
     
 }
 
+extension SCNVector3: CustomStringConvertible {
+    
+    public var description: String {
+        return "(x: \(x), y: \(y), z: \(z))"
+    }
+    
+}
+
 class VertBrush {
     
     // MARK: Metal
@@ -193,16 +201,10 @@ class VertBrush {
         lastIndexUpdateIdx = count
     }
 
-    func setPoints(vert: [Vertex] = [Vertex](), pnts: [SCNVector3] = [SCNVector3](), idces: Array<UInt32> = Array<UInt32>(), lastVert: Int, lastIndex: Int)
-    {
-        self.clear()
-        objc_sync_enter(self)
-        vertices = vert
-        points = pnts
-        indices = idces
-        lastVertUpdateIdx = lastVert
-        lastIndexUpdateIdx = lastIndex
-        objc_sync_exit(self)
+    func setPoints(with graffiti: GraffitiObject) {
+        for point in graffiti.points {
+            self.addPoint(point)
+        }
         self.updateBuffers()
     }
     

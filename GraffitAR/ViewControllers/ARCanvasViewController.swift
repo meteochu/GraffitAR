@@ -29,6 +29,8 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     var hasSetupPipeline = false
     
+    var hasSetupGraffiti: Bool = false
+    
     var graffiti: Graffiti?
     
     override func viewDidLoad() {
@@ -80,7 +82,7 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
             alertController.addTextField { textField in
                 textField.placeholder = "Artwork Name..."
             }
-            self.sceneView.pause(self)
+            self.sceneView.session.pause()
             alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
                 let nameField = alertController.textFields![0]
                 let name = nameField.text ?? "Artwork"
@@ -105,14 +107,12 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     func loadPreset(graffiti: Graffiti) {
         self.isDrawing = false
-        let obj = graffiti.graffitiObj!
-        vertBrush.setPoints(vert: obj.vertices, pnts: obj.points, idces: obj.indices,
-                            lastVert: obj.lastVert, lastIndex: obj.lastIndex)
+        vertBrush.setPoints(with: graffiti.graffitiObj)
     }
     
     @IBAction func didSelectDrawButton(_ sender: UIButton) {
         self.isDrawing = !self.isDrawing
-        if ( self.isDrawing ) {
+        if self.isDrawing {
             self.splitLine = true
         }
     }
@@ -159,9 +159,11 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
             // pixelFormat is different if called at viewWillAppear
             hasSetupPipeline = true
             vertBrush.setupPipeline(device: sceneView.device!, pixelFormat: self.metalLayer.pixelFormat)
-            if let graffiti = self.graffiti {
-                self.loadPreset(graffiti: graffiti)
-            }
+        }
+        
+        if let _ = sceneView.session.currentFrame, let graffiti = self.graffiti, !hasSetupGraffiti {
+            self.loadPreset(graffiti: graffiti)
+            hasSetupGraffiti = true
         }
         
         if let commandQueue = self.sceneView?.commandQueue {
