@@ -10,7 +10,7 @@ import Foundation
 
 class Graffiti: NSObject, Codable {
 
-    init(name: String, imageRef: String, creator: UserID, detail: String, graffitiObject: GraffitiObject) {
+    init(name: String, imageRef: String, creator: UserID, detail: String, fireBaseKey: String, graffitiObject: GraffitiObject) {
         super.init()
         self.name = name
         self.imageRef = imageRef
@@ -20,6 +20,7 @@ class Graffiti: NSObject, Codable {
         self.created = Date()
         self.downloads = 0
         self.isPublished = false
+        self.fireBaseKey = fireBaseKey
     }
     
     var name: String = ""
@@ -35,7 +36,8 @@ class Graffiti: NSObject, Codable {
     var isPublished: Bool = false
     
     var detail: String = ""
+
+    var fireBaseKey: String = ""
     
     var graffitiObj: GraffitiObject!
-    
 }

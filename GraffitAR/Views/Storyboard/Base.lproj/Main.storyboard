@@ -202,6 +202,7 @@
                         <outlet property="createdDateLabel" destination="f3m-Z4-0qO" id="JM5-3I-TUd"/>
                         <outlet property="detailLabel" destination="o2H-uj-DhG" id="U5Y-Uc-8YY"/>
                         <outlet property="downloadCountLabel" destination="2Kk-oD-3ev" id="qtx-DS-XYo"/>
+                        <outlet property="favouriteButton" destination="ELw-eF-ebJ" id="Bbi-NR-IHI"/>
                         <outlet property="graffitiNameLabel" destination="Nt6-uZ-dEa" id="hyH-vs-1eE"/>
                         <outlet property="previewImageView" destination="NEA-jn-lSl" id="8Pt-LI-y2X"/>
                         <outlet property="publishButton" destination="6RU-vn-c2q" id="HXS-1I-cmS"/>
