@@ -11,6 +11,8 @@ import UIKit
 class MyDrawingDetailViewController: UIViewController {
     
     // IBOutlets...
+    
+    @IBOutlet weak var graffitiNameLabel: UILabel!
 
     @IBOutlet weak var artistNameLabel: UILabel!
     
@@ -43,8 +45,9 @@ class MyDrawingDetailViewController: UIViewController {
     }
     
     func reloadData() {
-        artistNameLabel.text = graffiti.creator
+        graffitiNameLabel.text = graffiti.name
         createdDateLabel.text = "Created on \(DateFormatter.localizedString(from: graffiti.created, dateStyle: .short, timeStyle: .short))"
+        artistNameLabel.text = "by \(graffiti.creator)"
         detailLabel.text = graffiti.detail
         downloadCountLabel.text = "\(graffiti.downloads) Downloads"
         

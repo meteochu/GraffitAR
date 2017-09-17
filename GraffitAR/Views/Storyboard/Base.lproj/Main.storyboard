@@ -139,8 +139,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iZe-ic-Qpo">
                                 <rect key="frame" x="32" y="96" width="311" height="522"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt6-uZ-dEa">
-                                        <rect key="frame" x="0.0" y="0.0" width="132" height="31.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graffiti Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt6-uZ-dEa">
+                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="31.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -157,20 +157,26 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-Ej-LTl">
+                                        <rect key="frame" x="0.0" y="270" width="91" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the detail for the graffiti item, this can go beyond 1 line. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2H-uj-DhG">
-                                        <rect key="frame" x="0.0" y="270" width="311" height="41"/>
+                                        <rect key="frame" x="0.0" y="298.5" width="311" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloads: X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kk-oD-3ev">
-                                        <rect key="frame" x="0.0" y="319" width="105" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="347.5" width="105" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RU-vn-c2q">
-                                        <rect key="frame" x="0.0" y="347.5" width="51" height="174.5"/>
+                                        <rect key="frame" x="0.0" y="376" width="51" height="146"/>
                                         <state key="normal" title="Publish"/>
                                     </button>
                                 </subviews>
@@ -187,10 +193,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="h1I-Pm-uvG"/>
                     <connections>
-                        <outlet property="artistNameLabel" destination="Nt6-uZ-dEa" id="prd-Z6-vFh"/>
+                        <outlet property="artistNameLabel" destination="zkX-Ej-LTl" id="W2x-0L-A1V"/>
                         <outlet property="createdDateLabel" destination="f3m-Z4-0qO" id="JM5-3I-TUd"/>
                         <outlet property="detailLabel" destination="o2H-uj-DhG" id="U5Y-Uc-8YY"/>
                         <outlet property="downloadCountLabel" destination="2Kk-oD-3ev" id="qtx-DS-XYo"/>
+                        <outlet property="graffitiNameLabel" destination="Nt6-uZ-dEa" id="hyH-vs-1eE"/>
                         <outlet property="previewImageView" destination="NEA-jn-lSl" id="8Pt-LI-y2X"/>
                     </connections>
                 </viewController>

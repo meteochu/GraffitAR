@@ -10,9 +10,9 @@ import Foundation
 
 class Graffiti: NSObject, Codable {
     
-    var imageRef: String = ""
+    var name: String = ""
     
-    var previewImageRef: String = ""
+    var imageRef: String = ""
     
     var creator: UserID = ""
     

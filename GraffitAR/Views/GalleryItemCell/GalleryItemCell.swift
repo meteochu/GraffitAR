@@ -13,7 +13,7 @@ class GalleryItemCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
     
-    @IBOutlet var artist : UILabel!
+    @IBOutlet var titleLabel: UILabel!
     
     private var handle: UInt?
     
@@ -23,12 +23,16 @@ class GalleryItemCell: UICollectionViewCell {
                 self?.imageView.image = image
             }
             
-            if let user = DataController.shared.users[graffiti.creator] {
-                self.artist.text = user.name
+            if !graffiti.name.isEmpty {
+                self.titleLabel.text = graffiti.name
             } else {
-                self.handle = DataController.shared.fetchUser(graffiti.creator, with: { [weak self] user in
-                    self?.artist.text = user?.name
-                })
+                if let user = DataController.shared.users[graffiti.creator] {
+                    self.titleLabel.text = user.name
+                } else {
+                    self.handle = DataController.shared.fetchUser(graffiti.creator) { [weak self] user in
+                        self?.titleLabel.text = user?.name
+                    }
+                }
             }
         }
     }
@@ -50,7 +54,7 @@ class GalleryItemCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.imageView.image = nil
-        self.artist.text = ""
+        self.titleLabel.text = ""
         if let handle = handle {
             DataController.shared.stop(handle: handle)
         }
