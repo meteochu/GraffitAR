@@ -154,7 +154,7 @@ class DataController: NSObject {
     }
     
     func fetchGraffiti(withId id: String, callback: @escaping (Graffiti?) -> Void) -> UInt {
-        return Database.database().reference().child("graffiti").observe(.value) { [weak self] snapshot in
+        return Database.database().reference().child("graffiti").child(id).observe(.value) { [weak self] snapshot in
             guard let dict = snapshot.value as? [String: Any], let decoder = self?.decoder else {
                 return callback(nil)
             }
