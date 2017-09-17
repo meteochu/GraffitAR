@@ -72,19 +72,15 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         // save thing...
         print("Saving AR map...")
         let graffitiObj = vertBrush.getGraffitiPoints()
-        let alertController = UIAlertController(title: "Save Graffiti", message: "Please enter a name for your artwork.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Enter a Name:", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "Artwork Name..."
         }
-        alertController.addTextField { textField in
-            textField.placeholder = "Enter Artwork Detail..."
-        }
-        
+        self.sceneView.pause(self)
         alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-            let nameField = alertController.textFields![0], detailField = alertController.textFields![1]
+            let nameField = alertController.textFields![0]
             let name = nameField.text ?? "Artwork"
-            let detail = detailField.text ?? ""
-            
+            let detail = ""
             DataController.shared.uploadGraffiti(graffitiObj, image: self.sceneView.snapshot(), named: name, detail: detail) { error in
                 if let error = error {
                     let errorController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -96,7 +92,9 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
             }
         })
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            self.sceneView.play(self)
+        }))
         self.present(alertController, animated: true, completion: nil)
     }
     
