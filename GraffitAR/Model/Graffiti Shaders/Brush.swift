@@ -37,15 +37,7 @@ extension SCNVector3: Codable {
 
 struct GraffitiObject: Codable {
     
-    init(vertices:[Vertex], points:[SCNVector3], indices:[UInt32], lastVert:Int, lastIndex:Int) {
-        self.vertices = vertices
-        self.points = points
-        self.indices = indices
-        self.lastVert = lastVert
-        self.lastIndex = lastIndex
-    }
-    
-    let vertices: [Vertex]
+    var vertices: [Vertex] = []
     
     let points: [SCNVector3]
     
@@ -214,13 +206,12 @@ class VertBrush {
         self.updateBuffers()
     }
     
-    func savePoints(){
-        let saveObj = GraffitiObject(vertices:vertices, points:points, indices:indices, lastVert:lastVertUpdateIdx, lastIndex:lastIndexUpdateIdx)
-        
-        // need to replace this data with legit data.
-        let uid = Auth.auth().currentUser?.uid
-        
-        DataController.shared.uploadGraffiti(name: "asdfjkl", imageRef: "1234567890.png", creator: uid, isPublished: false, detail: "", saveObj: saveObj)
+    func getGraffitiPoints() -> GraffitiObject {
+        return GraffitiObject(vertices: vertices,
+                              points: points,
+                              indices: indices,
+                              lastVert: lastVertUpdateIdx,
+                              lastIndex: lastIndexUpdateIdx)
     }
     
     func clear() {

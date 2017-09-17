@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 import Firebase
@@ -32,6 +33,23 @@ class DataController: NSObject {
         return encoder
     }()
     
+    func loadAllUsers() -> UInt {
+        return Database.database().reference().child("users").observe(.value) { [weak self] snapshot in
+            guard let object = snapshot.value as? [String: Any], let decoder = self?.decoder else { return }
+            do {
+                var users = [UserID: User]()
+                for (_, value) in object {
+                    let data = try JSONSerialization.data(withJSONObject: value, options: [])
+                    let user = try decoder.decode(User.self, from: data)
+                    users[user.id] = user
+                }
+                self?.users = users
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     func fetchUser(_ uid: String, with callback: @escaping (User?) -> Void) -> UInt {
         return Database.database().reference().child("users").child(uid).observe(.value, with: { [weak self] snapshot in
             guard let object = snapshot.value as? [String: Any], let decoder = self?.decoder else { return callback(nil) }
@@ -56,7 +74,7 @@ class DataController: NSObject {
             var groups = [Graffiti]()
             let graffitiRef = reference.child("graffiti")
             var counter = 0
-            for id in array {
+            for id in array where !id.isEmpty {
                 graffitiRef.child(id).observeSingleEvent(of: .value, with: { [weak self] ss in
                     guard let value = ss.value as? [String: Any], let decoder = self?.decoder else {
                         counter += 1
@@ -84,16 +102,31 @@ class DataController: NSObject {
         }
     }
     
-    func uploadGraffiti(name:String! = "", imageRef:String, creator:UserID?, isPublished:Bool = false, detail:String! = "", saveObj:GraffitiObject!) {
-        let reference = Database.database().reference()
-        let creator = creator ?? ""
-        let newGraffiti:Graffiti = Graffiti(name:name, imageRef:imageRef, creator:creator, created:Date(), downloads:0, isPublished:isPublished, detail:detail, graffitiObj:saveObj)
-        
-        if let encodedGraffiti = try? encoder.encode(newGraffiti),
-            let json = try? JSONSerialization.jsonObject(with: encodedGraffiti, options: []) {
-            reference.child("graffiti").childByAutoId().setValue(json)
+    func uploadGraffiti(_ object: GraffitiObject, image: UIImage, named: String, detail: String, callback: @escaping (Error?) -> Void) {
+        let currentUser = Auth.auth().currentUser!.uid
+        let jpegData = UIImageJPEGRepresentation(image, 0.8)!
+        let metadata = StorageMetadata()
+        let imageId = "\(UUID().uuidString).jpg"
+        metadata.contentType = "image/jpg"
+        Storage.storage().reference(withPath: "graffiti").child(imageId).putData(jpegData, metadata: metadata) { [weak self] metadata, error in
+            if let error = error {
+                callback(error)
+            } else {
+                // success
+                let reference = Database.database().reference()
+                let graffiti = Graffiti(name: named, imageRef: imageId, creator: currentUser, detail: detail, graffitiObject: object)
+                if let encoder = self?.encoder,
+                    let encodedGraffiti = try? encoder.encode(graffiti),
+                    let json = try? JSONSerialization.jsonObject(with: encodedGraffiti, options: []),
+                    let drawings = self?.users[currentUser]?.drawings {
+                    let newObjRef = reference.child("graffiti").childByAutoId()
+                    newObjRef.setValue(json)
+                    let imageKey = newObjRef.key
+                    reference.child("users").child(currentUser).child("drawings").updateChildValues(["\(drawings.count)": imageKey])
+                }
+                callback(nil)
+            }
         }
-        
     }
     
     func fetchGalleryDrawings(callback: @escaping ([Graffiti]?) -> Void) -> UInt {

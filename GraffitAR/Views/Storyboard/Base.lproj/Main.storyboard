@@ -247,10 +247,11 @@
                                     <action selector="didSelectSaveButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yv0-Yi-JY7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2Z-vq-SfX">
-                                <rect key="frame" x="168.5" y="573" width="37" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="Draw"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2Z-vq-SfX">
+                                <rect key="frame" x="307" y="567" width="36" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="Paintbrush"/>
                                 <connections>
                                     <action selector="didSelectDrawButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="CIu-Ar-og2"/>
                                 </connections>
@@ -259,12 +260,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7hv-W9-moh" firstAttribute="bottom" secondItem="7uB-cn-1i9" secondAttribute="bottom" id="5Aa-6P-uFv"/>
+                            <constraint firstItem="SLD-Ie-v0K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7hv-W9-moh" secondAttribute="leading" constant="12" id="CR6-7U-IHn"/>
+                            <constraint firstItem="7uB-cn-1i9" firstAttribute="trailing" secondItem="P2Z-vq-SfX" secondAttribute="trailing" constant="32" id="UhK-fB-NFe"/>
                             <constraint firstItem="SLD-Ie-v0K" firstAttribute="top" secondItem="7uB-cn-1i9" secondAttribute="top" constant="32" id="Xas-OA-496"/>
                             <constraint firstItem="7uB-cn-1i9" firstAttribute="leading" secondItem="7hv-W9-moh" secondAttribute="leading" id="dDC-s5-n7b"/>
                             <constraint firstItem="7uB-cn-1i9" firstAttribute="top" secondItem="7hv-W9-moh" secondAttribute="top" id="gHd-JI-66D"/>
-                            <constraint firstItem="P2Z-vq-SfX" firstAttribute="bottom" secondItem="7uB-cn-1i9" secondAttribute="bottom" constant="-64" id="hWY-Me-kLY"/>
+                            <constraint firstItem="7uB-cn-1i9" firstAttribute="bottom" secondItem="P2Z-vq-SfX" secondAttribute="bottom" constant="64" id="hWY-Me-kLY"/>
                             <constraint firstItem="7hv-W9-moh" firstAttribute="trailing" secondItem="7uB-cn-1i9" secondAttribute="trailing" id="jBo-Ow-zoD"/>
-                            <constraint firstItem="P2Z-vq-SfX" firstAttribute="centerX" secondItem="7uB-cn-1i9" secondAttribute="centerX" id="nfR-Bs-Low"/>
                             <constraint firstItem="7uB-cn-1i9" firstAttribute="trailing" secondItem="SLD-Ie-v0K" secondAttribute="trailing" constant="32" id="ymB-fh-Whs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7hv-W9-moh"/>

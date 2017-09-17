@@ -9,6 +9,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import Firebase
 
 class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
 
@@ -69,10 +70,34 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func didSelectSaveButton(_ sender: UIButton) {
         // save thing...
-        print("save hit")
-        vertBrush.savePoints()
-        vertBrush.clear()
-        dismiss(animated: true, completion: nil)
+        print("Saving AR map...")
+        let graffitiObj = vertBrush.getGraffitiPoints()
+        let alertController = UIAlertController(title: "Save Graffiti", message: "Please enter a name for your artwork.", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Artwork Name..."
+        }
+        alertController.addTextField { textField in
+            textField.placeholder = "Enter Artwork Detail..."
+        }
+        
+        alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+            let nameField = alertController.textFields![0], detailField = alertController.textFields![1]
+            let name = nameField.text ?? "Artwork"
+            let detail = detailField.text ?? ""
+            
+            DataController.shared.uploadGraffiti(graffitiObj, image: self.sceneView.snapshot(), named: name, detail: detail) { error in
+                if let error = error {
+                    let errorController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                    errorController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+                    alertController.present(errorController, animated: true, completion: nil)
+                } else {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        })
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func loadPreset(graffiti:Graffiti) {
@@ -92,50 +117,37 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        
         if self.isDrawing {
-            
             let pointer = getPointerPosition()
-            if ( pointer.valid ) {
+            if pointer.valid {
                 
-                if ( vertBrush.points.count == 0 || (vertBrush.points.last! - pointer.pos).length() > 0.001 ) {
-                    
+                if vertBrush.points.isEmpty || (vertBrush.points.last! - pointer.pos).length() > 0.001 {
                     var radius : Float = 0.001
-                    
-                    
-                    if ( splitLine || vertBrush.points.count < 2 ) {
+                    if splitLine || vertBrush.points.count < 2 {
                         lineRadius = 0.001
                     } else {
-                        
                         let i = vertBrush.points.count-1
                         let p1 = vertBrush.points[i]
                         let p2 = vertBrush.points[i-1]
-                        
                         radius = 0.001 + min(0.015, 0.005 * pow( ( p2-p1 ).length() / 0.005, 2))
-                        
                     }
                     
                     lineRadius = lineRadius - (lineRadius - radius)*0.075
                     vertBrush.addPoint(pointer.pos, radius: lineRadius, splitLine:splitLine)
                     
-                    if ( splitLine ) { splitLine = false }
-                    
+                    if splitLine {
+                        splitLine = false
+                    }
                 }
-                
             }
-            
         }
         
-        if ( frameIdx % 100 == 0 ) {
+        if frameIdx % 100 == 0 {
             print(vertBrush.points.count, " points")
         }
         
         frameIdx = frameIdx + 1
-        
-        //if ( frameIdx % 2 == 0 ) {
         vertBrush.updateBuffers()
-        //}
-        
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
@@ -180,7 +192,6 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         
         let mat = SCNMatrix4.init(currentFrame.camera.transform)
         let dir = SCNVector3(-1 * mat.m31, -1 * mat.m32, -1 * mat.m33)
-        
         let currentPosition = pointOfView.position + (dir * 0.12)
         
         return (currentPosition, true, pointOfView.position)

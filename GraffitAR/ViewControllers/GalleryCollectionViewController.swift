@@ -17,12 +17,14 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     
     var drawingRef: UInt!
     
+    var usersRef: UInt!
+    
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.registerNib(GalleryItemCell.self)
-        
+        self.usersRef = DataController.shared.loadAllUsers()
         self.drawingRef = DataController.shared.fetchGalleryDrawings(callback:{ [weak self] array in
             if let array = array {
                 self?.graffitis = array
@@ -70,8 +72,9 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     deinit {
-        guard let ref = self.drawingRef else { return }
-        DataController.shared.stop(handle: ref)
+        guard let drawingRef = self.drawingRef, let userRef = self.usersRef else { return }
+        DataController.shared.stop(handle: drawingRef)
+        DataController.shared.stop(handle: userRef)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
