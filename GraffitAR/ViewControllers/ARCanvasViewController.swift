@@ -28,8 +28,6 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     var hasSetupPipeline = false
     
-    var loadFromSet: Bool = false;
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,14 +70,9 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func didSelectSaveButton(_ sender: UIButton) {
         // save thing...
         print("save hit")
-        
-        if ( self.loadFromSet ) {
-            vertBrush.loadPoints()
-        } else {
-            vertBrush.savePoints()
-            vertBrush.clear()
-        }
-        self.loadFromSet = !self.loadFromSet
+        vertBrush.savePoints()
+        vertBrush.clear()
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didSelectDrawButton(_ sender: UIButton) {

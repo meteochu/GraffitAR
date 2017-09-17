@@ -87,8 +87,11 @@ class DataController: NSObject {
         let reference = Database.database().reference()
         let creator = creator ?? ""
         let newGraffiti:Graffiti = Graffiti(name:name, imageRef:imageRef, creator:creator, created:Date(), downloads:0, isPublished:isPublished, detail:detail, graffitiObj:saveObj)
-        reference.child("graffiti")
-        //        let graffiti
+        
+        if let encodedGraffiti = try? encoder.encode(newGraffiti),
+            let json = try? JSONSerialization.jsonObject(with: encodedGraffiti, options: []) {
+            reference.child("graffiti").childByAutoId().setValue(json)
+        }
         
     }
     

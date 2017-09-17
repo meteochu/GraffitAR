@@ -5,6 +5,7 @@
 
 import Foundation
 import SceneKit
+import Firebase
 
 let vertsPerPoint = 8
 let maxPoints = 20000
@@ -76,7 +77,6 @@ class VertBrush {
     
     var lastVertUpdateIdx = 0
     var lastIndexUpdateIdx = 0
-    var prevSaveObj: GraffitiObject?
     
     var prevPerpVec = SCNVector3Zero
     
@@ -216,15 +216,16 @@ class VertBrush {
     func savePoints(){
         let saveObj = GraffitiObject(vertices:vertices, points:points, indices:indices, lastVert:lastVertUpdateIdx, lastIndex:lastIndexUpdateIdx)
         
-        prevSaveObj = saveObj
+        // need to replace this data with legit data.
+        let uid = Auth.auth().currentUser?.uid
         
+        DataController.shared.uploadGraffiti(name: "test", imageRef: "1234567890.png", creator: uid, isPublished: false, detail: "", saveObj: saveObj)
     }
     
     func loadPoints(){
-        let pointsData = prevSaveObj!
         
-        self.setPoints(vert: pointsData.vertices, pnts:pointsData.points, idces: pointsData.indices, lastVert:pointsData.lastVert, lastIndex:pointsData.lastIndex)
-        
+//        self.setPoints(vert: pointsData.vertices, pnts:pointsData.points, idces: pointsData.indices, lastVert:pointsData.lastVert, lastIndex:pointsData.lastIndex)
+//
         self.updateBuffers()
     }
     
