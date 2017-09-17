@@ -116,7 +116,8 @@ class DataController: NSObject {
                 let reference = Database.database().reference()
                 let newObjRef = reference.child("graffiti").childByAutoId()
                 let imageKey = newObjRef.key
-                let graffiti = Graffiti(name: named, imageRef: imageId, creator: currentUser, detail: detail, fireBaseKey: imageKey, graffitiObject: object)
+                let graffiti = Graffiti(name: named, imageRef: imageId, creator: currentUser,
+                                        detail: detail, id: imageKey, graffitiObject: object)
                 if let encoder = self?.encoder,
                     let encodedGraffiti = try? encoder.encode(graffiti),
                     let json = try? JSONSerialization.jsonObject(with: encodedGraffiti, options: []),
@@ -166,33 +167,29 @@ class DataController: NSObject {
         }
     }
     
-    func publishGraffiti(graffiti:Graffiti!) {
+    func publishGraffiti(_ graffiti: Graffiti) {
         let uid = Auth.auth().currentUser!.uid
         let reference = Database.database().reference()
-        if (graffiti.creator == uid && !graffiti.isPublished) {
-            reference.child("graffiti").child(graffiti.fireBaseKey).child("isPublished").setValue(true)
+        if graffiti.creator == uid && !graffiti.isPublished {
+            reference.child("graffiti").child(graffiti.id).child("isPublished").setValue(true)
         }
     }
     
-    func favouriteGraffiti(graffiti:Graffiti!, isFavourited:Bool) {
-        let reference = Database.database().reference()
+    func favouriteGraffiti(_ graffiti: Graffiti, isFavourited: Bool) {
         let currentUser = Auth.auth().currentUser!.uid
-        if (isFavourited) {
-            let favourites = self.users[currentUser]?.favourites
-            if (favourites != nil) {
-                reference.child("users").child(currentUser).child("favourites").updateChildValues(["\(favourites!.count)": graffiti.fireBaseKey])
+        let reference = Database.database().reference().child("users").child(currentUser).child("favourites")
+        if isFavourited {
+            if let favourites = self.users[currentUser]?.favourites {
+                reference.updateChildValues(["\(favourites.count)": graffiti.id])
             }
         } else {
-            reference.child("users").child(currentUser).child("favourites").observe(.value, with: { snapshot in
-                guard let array = snapshot.value as? [String] else {
-                    return
+            reference.observe(.value) { snapshot in
+                guard var array = snapshot.value as? [String] else { return }
+                if let index = array.index(of: graffiti.id) {
+                    array.remove(at: index)
+                    reference.setValue(array)
                 }
-                for i in 0 ..< array.count {
-                    if (array[i] == graffiti.fireBaseKey) {
-                        reference.child("users").child(currentUser).child("favourites").child(String(i)).removeValue()
-                    }
-                }
-            })
+            }
         }
     }
     

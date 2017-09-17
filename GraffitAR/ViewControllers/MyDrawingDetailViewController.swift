@@ -64,18 +64,16 @@ class MyDrawingDetailViewController: UIViewController {
         if let user = DataController.shared.users[graffiti.creator] {
             self.artistNameLabel.text = user.name
             for key in user.favourites {
-                if (key == graffiti.fireBaseKey) {
+                if key == graffiti.id {
                     self.isFavourited = true
                 }
             }
         } else {
             self.handle = DataController.shared.fetchUser(graffiti.creator) { [weak self] user in
                 self?.artistNameLabel.text = user?.name
-                if (user != nil && self != nil) {
-                    for key in user!.favourites {
-                        if (key == self!.graffiti.fireBaseKey) {
-                            self!.isFavourited = true
-                        }
+                if let user = user, let graffiti = self?.graffiti {
+                    for key in user.favourites where key == graffiti.id {
+                        self?.isFavourited = true
                     }
                 }
             }
@@ -83,7 +81,7 @@ class MyDrawingDetailViewController: UIViewController {
         
         self.favouriteButton.image = self.isFavourited ?  #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star-Bordered")
         
-        if (graffiti.isPublished) {
+        if graffiti.isPublished {
             self.publishButton.setTitle("Published", for: UIControlState.normal)
             self.publishButton.isEnabled = false
         } else {
@@ -96,12 +94,12 @@ class MyDrawingDetailViewController: UIViewController {
     @IBAction func didSelectStarButton(_ sender: UIBarButtonItem) {
         self.isFavourited = !self.isFavourited
         sender.image = self.isFavourited ?  #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star-Bordered")
-        DataController.shared.favouriteGraffiti(graffiti: graffiti, isFavourited:self.isFavourited)
+        DataController.shared.favouriteGraffiti(graffiti, isFavourited:self.isFavourited)
     }
     
     
     @IBAction func didSelectPublishButton(_ sender: UIButton) {
-        DataController.shared.publishGraffiti(graffiti: graffiti)
+        DataController.shared.publishGraffiti(graffiti)
     }
     
     
