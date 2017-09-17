@@ -5,7 +5,6 @@
 
 import Foundation
 import SceneKit
-import Firebase
 
 let vertsPerPoint = 8
 let maxPoints = 20000
@@ -36,14 +35,6 @@ extension SCNVector3: Codable {
 }
 
 struct GraffitiObject: Codable {
-    
-    init(vertices:[Vertex], points:[SCNVector3], indices:[UInt32], lastVert:Int, lastIndex:Int) {
-        self.vertices = vertices
-        self.points = points
-        self.indices = indices
-        self.lastVert = lastVert
-        self.lastIndex = lastIndex
-    }
     
     let vertices: [Vertex]
     
@@ -213,13 +204,12 @@ class VertBrush {
         objc_sync_exit(self)
     }
     
-    func savePoints(){
-        let saveObj = GraffitiObject(vertices:vertices, points:points, indices:indices, lastVert:lastVertUpdateIdx, lastIndex:lastIndexUpdateIdx)
-        
-        // need to replace this data with legit data.
-        let uid = Auth.auth().currentUser?.uid
-        
-        DataController.shared.uploadGraffiti(name: "test", imageRef: "1234567890.png", creator: uid, isPublished: false, detail: "", saveObj: saveObj)
+    func getGraffitiPoints() -> GraffitiObject {
+        return GraffitiObject(vertices: vertices,
+                              points: points,
+                              indices: indices,
+                              lastVert: lastVertUpdateIdx,
+                              lastIndex: lastIndexUpdateIdx)
     }
     
     func loadPoints(){

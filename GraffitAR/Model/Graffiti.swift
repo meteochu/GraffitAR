@@ -10,16 +10,16 @@ import Foundation
 
 class Graffiti: NSObject, Codable {
 
-    init(name: String, imageRef: String, creator: UserID, created: Date, downloads:Int, isPublished:Bool, detail:String, graffitiObj:GraffitiObject!) {
+    init(name: String, imageRef: String, creator: UserID, detail: String, graffitiObject: GraffitiObject) {
         super.init()
         self.name = name
         self.imageRef = imageRef
         self.creator = creator
-        self.created = created
-        self.downloads = downloads
-        self.isPublished = isPublished
         self.detail = detail
-        self.graffitiObj = graffitiObj
+        self.graffitiObj = graffitiObject
+        self.created = Date()
+        self.downloads = 0
+        self.isPublished = false
     }
     
     var name: String = ""
