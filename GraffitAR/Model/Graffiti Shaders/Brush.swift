@@ -193,7 +193,7 @@ class VertBrush {
         lastIndexUpdateIdx = count
     }
 
-    func setPoints ( vert: [Vertex] = [Vertex](), pnts: [SCNVector3] = [SCNVector3](), idces: Array<UInt32> = Array<UInt32>(), lastVert: Int, lastIndex: Int)
+    func setPoints(vert: [Vertex] = [Vertex](), pnts: [SCNVector3] = [SCNVector3](), idces: Array<UInt32> = Array<UInt32>(), lastVert: Int, lastIndex: Int)
     {
         self.clear()
         objc_sync_enter(self)

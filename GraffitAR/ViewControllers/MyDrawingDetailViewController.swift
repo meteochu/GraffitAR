@@ -29,9 +29,14 @@ class MyDrawingDetailViewController: UIViewController {
     
     @IBOutlet weak var publishButton: UIButton!
     
+    // depending on the user state, it can also be a clone button
+    @IBOutlet weak var editGraffitiButton: UIButton!
+    
     var isFavourited: Bool = false
     
-    var handle: UInt!
+    var userHandle: UInt!
+    
+    var graffitiHandle: UInt!
     
     var graffiti: Graffiti! {
         didSet {
@@ -41,13 +46,25 @@ class MyDrawingDetailViewController: UIViewController {
     }
     
     deinit {
-        guard let handle = handle else { return }
-        DataController.shared.stop(handle: handle)
+        if let handle = userHandle {
+            DataController.shared.stop(handle: handle)
+        }
+        
+        if let handle = graffitiHandle {
+            DataController.shared.stop(handle: handle)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.reloadData()
+        
+        if let graffiti = self.graffiti {
+            self.graffitiHandle = DataController.shared.fetchGraffiti(withId: graffiti.id, callback: { [weak self] graffiti in
+                guard let graffiti = graffiti else { return }
+                self?.graffiti = graffiti
+            })
+        }
     }
     
     func reloadData() {
@@ -68,7 +85,7 @@ class MyDrawingDetailViewController: UIViewController {
                 }
             }
         } else {
-            self.handle = DataController.shared.fetchUser(graffiti.creator) { [weak self] user in
+            self.userHandle = DataController.shared.fetchUser(graffiti.creator) { [weak self] user in
                 self?.artistNameLabel.text = user?.name
                 if let user = user, let graffiti = self?.graffiti {
                     for key in user.favourites where key == graffiti.id {
@@ -81,6 +98,7 @@ class MyDrawingDetailViewController: UIViewController {
         self.favouriteButton.image = self.isFavourited ?  #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star-Bordered")
         
         if graffiti.creator == Auth.auth().currentUser!.uid {
+            self.editGraffitiButton.setTitle("Edit Graffiti", for: .normal)
             if graffiti.isPublished {
                 self.publishButton.setTitle("Artwork is published", for: .normal)
                 self.publishButton.backgroundColor = UIColor.gray
@@ -91,6 +109,7 @@ class MyDrawingDetailViewController: UIViewController {
             }
         } else {
             publishButton.isHidden = true
+            self.editGraffitiButton.setTitle("Download and Edit", for: .normal)
         }
     }
     
@@ -110,16 +129,26 @@ class MyDrawingDetailViewController: UIViewController {
             DataController.shared.publishGraffiti(self.graffiti) {
                 let endTime = Date().timeIntervalSince1970
                 let interval = endTime - startTime
-                DispatchQueue.main.asyncAfter(deadline: .now() + (2 - interval)) { [unowned self] in
+                DispatchQueue.main.asyncAfter(deadline: .now() + (2 - interval)) {
                     alertController.dismiss(animated: true, completion: nil)
-                    DataController.shared.fetchGraffiti(withId: self.graffiti.id) { graffiti in
-                        if let graf = graffiti {
-                            self.graffiti = graf
-                            self.reloadData()
-                        }
-                    }
                 }
             }
+        }
+    }
+    
+    @IBAction func didSelectEditButton(_ sender: UIButton) {
+        if graffiti.creator == Auth.auth().currentUser!.uid {
+            // current user, should just open vectors to browse.
+            self.performSegue(withIdentifier: "editGraffitiSegue", sender: self)
+        } else {
+            // clone + edit
+            
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? ARCanvasViewController {
+            controller.graffiti = self.graffiti
         }
     }
     

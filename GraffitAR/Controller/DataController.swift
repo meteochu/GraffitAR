@@ -130,8 +130,31 @@ class DataController: NSObject {
         }
     }
     
-    func fetchGraffiti(withId id: String, callback: @escaping (Graffiti?) -> Void) {
-        Database.database().reference().child("graffiti").observeSingleEvent(of: .value) { [weak self] snapshot in
+    func updateGraffiti(_ graffiti: Graffiti, with object: GraffitiObject,
+                        image: UIImage, callback: @escaping (Error?) -> Void) {
+        let jpegData = UIImageJPEGRepresentation(image, 0.8)!
+        graffiti.graffitiObj = object
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        let imageId = graffiti.imageRef
+        Storage.storage().reference(withPath: "graffiti").child(imageId).putData(jpegData, metadata: metadata) { [weak self] (metadata, error) in
+            if let error = error {
+                print(error)
+                callback(error)
+            } else {
+                let reference = Database.database().reference()
+                if let encoder = self?.encoder,
+                    let encodedGraffiti = try? encoder.encode(graffiti),
+                    let json = try? JSONSerialization.jsonObject(with: encodedGraffiti, options: []) {
+                    reference.child("graffiti").child(graffiti.id).setValue(json)
+                }
+                callback(nil)
+            }
+        }
+    }
+    
+    func fetchGraffiti(withId id: String, callback: @escaping (Graffiti?) -> Void) -> UInt {
+        return Database.database().reference().child("graffiti").observe(.value) { [weak self] snapshot in
             guard let dict = snapshot.value as? [String: Any], let decoder = self?.decoder else {
                 return callback(nil)
             }

@@ -176,8 +176,27 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RU-vn-c2q">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pd8-52-j9h">
                                         <rect key="frame" x="0.0" y="376" width="311" height="44"/>
+                                        <color key="backgroundColor" red="0.0" green="0.64582490820000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="contentEdgeInsets" minX="64" minY="12" maxX="64" maxY="12"/>
+                                        <state key="normal" title="Edit Graffiti">
+                                            <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didSelectEditButton:" destination="nHx-vm-gds" eventType="touchUpInside" id="4ew-3E-JyY"/>
+                                            <action selector="didSelectPublishButton:" destination="nHx-vm-gds" eventType="touchUpInside" id="XnB-FM-vIt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RU-vn-c2q">
+                                        <rect key="frame" x="0.0" y="428" width="311" height="44"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,14 +214,16 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX1-wt-XHl">
-                                        <rect key="frame" x="0.0" y="428" width="311" height="94"/>
+                                        <rect key="frame" x="0.0" y="480" width="311" height="42"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6RU-vn-c2q" firstAttribute="leading" secondItem="iZe-ic-Qpo" secondAttribute="leading" id="0yb-yd-P7j"/>
+                                    <constraint firstAttribute="trailing" secondItem="pd8-52-j9h" secondAttribute="trailing" id="bdc-w8-JKE"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="480" id="cIE-nE-lC4"/>
                                     <constraint firstAttribute="trailing" secondItem="6RU-vn-c2q" secondAttribute="trailing" id="h2e-ck-YzJ"/>
+                                    <constraint firstItem="pd8-52-j9h" firstAttribute="leading" secondItem="iZe-ic-Qpo" secondAttribute="leading" id="r8e-RF-3mi"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -228,10 +249,12 @@
                         <outlet property="createdDateLabel" destination="f3m-Z4-0qO" id="JM5-3I-TUd"/>
                         <outlet property="detailLabel" destination="o2H-uj-DhG" id="U5Y-Uc-8YY"/>
                         <outlet property="downloadCountLabel" destination="2Kk-oD-3ev" id="qtx-DS-XYo"/>
+                        <outlet property="editGraffitiButton" destination="pd8-52-j9h" id="a3E-Ki-Mia"/>
                         <outlet property="favouriteButton" destination="ELw-eF-ebJ" id="Bbi-NR-IHI"/>
                         <outlet property="graffitiNameLabel" destination="Nt6-uZ-dEa" id="hyH-vs-1eE"/>
                         <outlet property="previewImageView" destination="NEA-jn-lSl" id="8Pt-LI-y2X"/>
                         <outlet property="publishButton" destination="6RU-vn-c2q" id="WQt-IC-jHh"/>
+                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="editGraffitiSegue" id="jnb-Dp-MKE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XO-NX-RVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,6 +440,7 @@
         <image name="Star-Bordered" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jnb-Dp-MKE"/>
         <segue reference="ojh-RB-qcK"/>
         <segue reference="Y5K-Pc-mRC"/>
     </inferredMetricsTieBreakers>

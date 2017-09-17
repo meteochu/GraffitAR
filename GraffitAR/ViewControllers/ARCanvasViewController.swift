@@ -29,6 +29,8 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     
     var hasSetupPipeline = false
     
+    var graffiti: Graffiti?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,9 +58,6 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
-        
-        // setup the brush
-//        vertBrush.setupPipeline(device: sceneView.device!)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,37 +71,43 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         // save thing...
         print("Saving AR map...")
         let graffitiObj = vertBrush.getGraffitiPoints()
-        let alertController = UIAlertController(title: "Enter a Name:", message: nil, preferredStyle: .alert)
-        alertController.addTextField { textField in
-            textField.placeholder = "Artwork Name..."
-        }
-        self.sceneView.pause(self)
-        alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-            let nameField = alertController.textFields![0]
-            let name = nameField.text ?? "Artwork"
-            let detail = ""
-            DataController.shared.uploadGraffiti(graffitiObj, image: self.sceneView.snapshot(), named: name, detail: detail) { error in
-                if let error = error {
-                    let errorController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                    errorController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-                    alertController.present(errorController, animated: true, completion: nil)
-                } else {
-                    self.dismiss(animated: true, completion: nil)
-                }
+        if let graffiti = self.graffiti {
+            DataController.shared.updateGraffiti(graffiti, with: graffitiObj, image: self.sceneView.snapshot()) { error in
+                self.dismiss(animated: true, completion: nil)
             }
-        })
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            self.sceneView.play(self)
-        }))
-        self.present(alertController, animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(title: "Enter a Name:", message: nil, preferredStyle: .alert)
+            alertController.addTextField { textField in
+                textField.placeholder = "Artwork Name..."
+            }
+            self.sceneView.pause(self)
+            alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+                let nameField = alertController.textFields![0]
+                let name = nameField.text ?? "Artwork"
+                let detail = ""
+                DataController.shared.uploadGraffiti(graffitiObj, image: self.sceneView.snapshot(), named: name, detail: detail) { error in
+                    if let error = error {
+                        let errorController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                        errorController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+                        alertController.present(errorController, animated: true, completion: nil)
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            })
+            
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                self.sceneView.play(self)
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
-    func loadPreset(graffiti:Graffiti) {
+    func loadPreset(graffiti: Graffiti) {
         self.isDrawing = false
-        let obj:GraffitiObject = graffiti.graffitiObj!
-        
-        vertBrush.setPoints(vert: obj.vertices, pnts: obj.points, idces: obj.indices, lastVert: obj.lastVert, lastIndex: obj.lastIndex)
+        let obj = graffiti.graffitiObj!
+        vertBrush.setPoints(vert: obj.vertices, pnts: obj.points, idces: obj.indices,
+                            lastVert: obj.lastVert, lastIndex: obj.lastIndex)
     }
     
     @IBAction func didSelectDrawButton(_ sender: UIButton) {
@@ -138,10 +143,10 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
                     }
                 }
             }
-        }
-        
-        if frameIdx % 100 == 0 {
-            print(vertBrush.points.count, " points")
+            
+            if frameIdx % 100 == 0 {
+                print(vertBrush.points.count, " points")
+            }
         }
         
         frameIdx = frameIdx + 1
@@ -154,6 +159,9 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
             // pixelFormat is different if called at viewWillAppear
             hasSetupPipeline = true
             vertBrush.setupPipeline(device: sceneView.device!, pixelFormat: self.metalLayer.pixelFormat)
+            if let graffiti = self.graffiti {
+                self.loadPreset(graffiti: graffiti)
+            }
         }
         
         if let commandQueue = self.sceneView?.commandQueue {
