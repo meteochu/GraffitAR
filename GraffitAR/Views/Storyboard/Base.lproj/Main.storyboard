@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,6 +88,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="N3G-Xw-bdf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
@@ -118,10 +120,96 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="My Drawings" id="b7I-Cb-Leo"/>
+                    <connections>
+                        <segue destination="nHx-vm-gds" kind="show" identifier="showDrawingDetail" id="Y5K-Pc-mRC"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Vc-Fl-mQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1902" y="-192"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="ugB-2l-hQW">
+            <objects>
+                <viewController id="nHx-vm-gds" customClass="MyDrawingDetailViewController" customModule="GraffitAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uWs-FR-8me">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iZe-ic-Qpo">
+                                <rect key="frame" x="32" y="96" width="311" height="522"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graffiti Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt6-uZ-dEa">
+                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NEA-jn-lSl">
+                                        <rect key="frame" x="0.0" y="39.5" width="311" height="194"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="NEA-jn-lSl" secondAttribute="height" multiplier="16:10" id="6w6-ED-NcD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created on (Date)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3m-Z4-0qO">
+                                        <rect key="frame" x="0.0" y="241.5" width="140.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-Ej-LTl">
+                                        <rect key="frame" x="0.0" y="270" width="91" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the detail for the graffiti item, this can go beyond 1 line. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2H-uj-DhG">
+                                        <rect key="frame" x="0.0" y="298.5" width="311" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloads: X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kk-oD-3ev">
+                                        <rect key="frame" x="0.0" y="347.5" width="105" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RU-vn-c2q">
+                                        <rect key="frame" x="0.0" y="376" width="51" height="146"/>
+                                        <state key="normal" title="Publish"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iZe-ic-Qpo" firstAttribute="leading" secondItem="v3j-eb-mrv" secondAttribute="leading" constant="32" id="8Mm-hx-dQ6"/>
+                            <constraint firstItem="v3j-eb-mrv" firstAttribute="trailing" secondItem="iZe-ic-Qpo" secondAttribute="trailing" constant="32" id="a60-Ef-Xyv"/>
+                            <constraint firstItem="v3j-eb-mrv" firstAttribute="bottom" secondItem="iZe-ic-Qpo" secondAttribute="bottom" id="ibe-nc-WGa"/>
+                            <constraint firstItem="iZe-ic-Qpo" firstAttribute="top" secondItem="v3j-eb-mrv" secondAttribute="top" constant="32" id="upO-Ut-gd5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="v3j-eb-mrv"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail" id="h1I-Pm-uvG">
+                        <barButtonItem key="rightBarButtonItem" image="Star-Bordered" id="ELw-eF-ebJ">
+                            <connections>
+                                <action selector="didSelectStarButton:" destination="nHx-vm-gds" id="DYR-Je-XN0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="artistNameLabel" destination="zkX-Ej-LTl" id="W2x-0L-A1V"/>
+                        <outlet property="createdDateLabel" destination="f3m-Z4-0qO" id="JM5-3I-TUd"/>
+                        <outlet property="detailLabel" destination="o2H-uj-DhG" id="U5Y-Uc-8YY"/>
+                        <outlet property="downloadCountLabel" destination="2Kk-oD-3ev" id="qtx-DS-XYo"/>
+                        <outlet property="graffitiNameLabel" destination="Nt6-uZ-dEa" id="hyH-vs-1eE"/>
+                        <outlet property="previewImageView" destination="NEA-jn-lSl" id="8Pt-LI-y2X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7XO-NX-RVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2864.8000000000002" y="-191.1544227886057"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mDa-Jc-Xay">
@@ -294,6 +382,9 @@
             <point key="canvasLocation" x="144" y="888"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Star-Bordered" width="36" height="36"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ojh-RB-qcK"/>
     </inferredMetricsTieBreakers>

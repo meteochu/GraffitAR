@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-struct Vertex {
+struct Vertex: Codable {
     
     let x, y, z: Float     // position data
     let r, g, b, a: Float   // color data

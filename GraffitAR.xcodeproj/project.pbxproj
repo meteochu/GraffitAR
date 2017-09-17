@@ -24,6 +24,7 @@
 		A1B900701F6DCB30005E04A7 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1B9006F1F6DCB30005E04A7 /* Shaders.metal */; };
 		A1B900731F6DD0E1005E04A7 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900721F6DD0E1005E04A7 /* Vertex.swift */; };
 		A1B900751F6DD209005E04A7 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900741F6DD209005E04A7 /* Light.swift */; };
+		A1B900771F6DE114005E04A7 /* MyDrawingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900761F6DE114005E04A7 /* MyDrawingDetailViewController.swift */; };
 		A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */; };
 		A1CB9ECC1F6D64B7003AB27B /* GalleryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */; };
 		A1CB9ECF1F6D65C5003AB27B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */; };
@@ -56,6 +57,7 @@
 		A1B9006F1F6DCB30005E04A7 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		A1B900721F6DD0E1005E04A7 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		A1B900741F6DD209005E04A7 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		A1B900761F6DE114005E04A7 /* MyDrawingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyDrawingDetailViewController.swift; path = GraffitAR/ViewControllers/MyDrawingDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemCell.swift; sourceTree = "<group>"; };
 		A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryItemCell.xib; sourceTree = "<group>"; };
 		A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				A1A4DEB71F6CE7800074C7EC /* OnboardingViewController.swift */,
 				A1A4DEB91F6CE8FE0074C7EC /* GalleryCollectionViewController.swift */,
 				A1CB9EDA1F6D6BA0003AB27B /* MyDrawingsCollectionViewController.swift */,
+				A1B900761F6DE114005E04A7 /* MyDrawingDetailViewController.swift */,
 				A16A1B0F1F6CE443005BAE58 /* ARCanvasViewController.swift */,
 				A1ECBC401F6D60A100C5C398 /* SettingsViewController.swift */,
 			);
@@ -384,6 +387,7 @@
 				A1B900611F6DA400005E04A7 /* SCNVector3++.swift in Sources */,
 				A1ECBC411F6D60A100C5C398 /* SettingsViewController.swift in Sources */,
 				A1B900701F6DCB30005E04A7 /* Shaders.metal in Sources */,
+				A1B900771F6DE114005E04A7 /* MyDrawingDetailViewController.swift in Sources */,
 				A1CB9ED91F6D670A003AB27B /* User.swift in Sources */,
 				A1CB9ED11F6D6660003AB27B /* Graffiti.swift in Sources */,
 				A1B9006A1F6DCAB1005E04A7 /* BufferProvider.swift in Sources */,

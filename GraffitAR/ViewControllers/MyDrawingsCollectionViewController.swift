@@ -13,6 +13,8 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
 
     var myDrawings: [Graffiti] = []
     
+    var selectedIndex: Int = 0
+    
     var drawingRef: UInt!
     
     override func viewDidLoad() {
@@ -54,10 +56,22 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        selectedIndex = indexPath.item
+        self.performSegue(withIdentifier: "showDrawingDetail", sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numPerRow = self.traitCollection.horizontalSizeClass == .compact ? 2 : 3
         let itemWidth = floor(self.collectionView!.bounds.width/CGFloat(numPerRow)) - CGFloat(8 * numPerRow)
         return CGSize(width: itemWidth, height: itemWidth * 9 / 16)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? MyDrawingDetailViewController {
+            controller.graffiti = self.myDrawings[selectedIndex]
+        }
     }
 
 }

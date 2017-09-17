@@ -75,8 +75,8 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="artist" destination="brI-au-C83" id="S4t-5h-23k"/>
                 <outlet property="imageView" destination="0qQ-Lo-iHc" id="oTZ-BT-S2I"/>
+                <outlet property="titleLabel" destination="brI-au-C83" id="Y1a-fQ-3e7"/>
             </connections>
             <point key="canvasLocation" x="33" y="-2.5"/>
         </collectionViewCell>
