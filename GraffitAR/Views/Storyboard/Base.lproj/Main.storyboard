@@ -179,13 +179,17 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="480" id="cIE-nE-lC4"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="iZe-ic-Qpo" firstAttribute="leading" secondItem="v3j-eb-mrv" secondAttribute="leading" constant="32" id="8Mm-hx-dQ6"/>
-                            <constraint firstItem="v3j-eb-mrv" firstAttribute="trailing" secondItem="iZe-ic-Qpo" secondAttribute="trailing" constant="32" id="a60-Ef-Xyv"/>
+                            <constraint firstItem="iZe-ic-Qpo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v3j-eb-mrv" secondAttribute="leading" constant="32" id="8Mm-hx-dQ6"/>
+                            <constraint firstItem="v3j-eb-mrv" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iZe-ic-Qpo" secondAttribute="trailing" constant="32" id="a60-Ef-Xyv"/>
                             <constraint firstItem="v3j-eb-mrv" firstAttribute="bottom" secondItem="iZe-ic-Qpo" secondAttribute="bottom" id="ibe-nc-WGa"/>
+                            <constraint firstItem="iZe-ic-Qpo" firstAttribute="centerX" secondItem="v3j-eb-mrv" secondAttribute="centerX" id="pIh-ld-Ued"/>
                             <constraint firstItem="iZe-ic-Qpo" firstAttribute="top" secondItem="v3j-eb-mrv" secondAttribute="top" constant="32" id="upO-Ut-gd5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v3j-eb-mrv"/>
