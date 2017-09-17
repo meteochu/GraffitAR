@@ -20,6 +20,7 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.registerNib(GalleryItemCell.self)
+        self.collectionView!.registerNib(CreateDrawingCell.self)
         
         if let uid = Auth.auth().currentUser?.uid {
             self.drawingRef = DataController.shared.fetchDrawings(for: uid, with: { [weak self] array in
@@ -47,19 +48,27 @@ class MyDrawingsCollectionViewController: UICollectionViewController, UICollecti
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myDrawings.count
+        return myDrawings.count + 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath) as GalleryItemCell
-        cell.graffiti = myDrawings[indexPath.item]
-        return cell
+        if indexPath.item == myDrawings.count {
+            return collectionView.dequeueReusableCell(for: indexPath) as CreateDrawingCell
+        } else {
+            let cell = collectionView.dequeueReusableCell(for: indexPath) as GalleryItemCell
+            cell.graffiti = myDrawings[indexPath.item]
+            return cell
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        selectedIndex = indexPath.item
-        self.performSegue(withIdentifier: "showDrawingDetail", sender: self)
+        if indexPath.item == myDrawings.count {
+            self.performSegue(withIdentifier: "openARCanvas", sender: self)
+        } else {
+            selectedIndex = indexPath.item
+            self.performSegue(withIdentifier: "showDrawingDetail", sender: self)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
