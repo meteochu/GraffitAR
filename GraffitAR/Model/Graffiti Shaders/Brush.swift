@@ -61,6 +61,8 @@ class VertBrush {
     
     // MARK: Metal
     
+    static var currentSceneDrawable: CAMetalDrawable?
+    
     var vertexBuffer: MTLBuffer! = nil
     var indexBuffer: MTLBuffer! = nil
     
@@ -232,8 +234,8 @@ class VertBrush {
         
         guard !indices.isEmpty else { return }
         objc_sync_enter(self)
-        
         renderEncoder.setRenderPipelineState(pipelineState)
+        
         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         
         let uniformBuffer = bufferProvider.nextUniformsBuffer(projectionMatrix,
@@ -248,6 +250,7 @@ class VertBrush {
                                             indexType: MTLIndexType.uint32,
                                             indexBuffer: indexBuffer,
                                             indexBufferOffset: 0)
+        
         
         objc_sync_exit(self)
         
@@ -281,8 +284,6 @@ class VertBrush {
         indexBuffer = device.makeBuffer(length: indexDataSize, options: [])
         
         self.bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3)
-        
-        
     }
     
     private func toVert(_ pp:SCNVector3, _ nn:SCNVector3 ) -> Vertex {

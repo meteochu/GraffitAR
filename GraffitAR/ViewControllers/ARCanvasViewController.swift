@@ -60,6 +60,11 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        // set the frameBufferOnly to false so we can load the bytes
+        if let metalLayer = self.sceneView.layer as? CAMetalLayer {
+            metalLayer.framebufferOnly = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,7 +79,8 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         print("Saving AR map...")
         let graffitiObj = vertBrush.getGraffitiPoints()
         if let graffiti = self.graffiti {
-            DataController.shared.updateGraffiti(graffiti, with: graffitiObj, image: self.sceneView.snapshot()) { error in
+            let image = UIImage(cgImage: VertBrush.currentSceneDrawable!.texture.toImage()!)
+            DataController.shared.updateGraffiti(graffiti, with: graffitiObj, image: image) { error in
                 self.dismiss(animated: true, completion: nil)
             }
         } else {
@@ -120,6 +126,7 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+
         if self.isDrawing {
             let pointer = getPointerPosition()
             if pointer.valid {
@@ -154,7 +161,6 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        
         if !hasSetupPipeline {
             // pixelFormat is different if called at viewWillAppear
             hasSetupPipeline = true
@@ -168,9 +174,11 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         
         if let commandQueue = self.sceneView?.commandQueue {
             if let encoder = self.sceneView.currentRenderCommandEncoder {
+                
                 let projMat = float4x4(self.sceneView.pointOfView!.camera!.projectionTransform)
                 let modelViewMat = float4x4(self.sceneView.pointOfView!.worldTransform).inverse
-                vertBrush.render(commandQueue, encoder, parentModelViewMatrix: modelViewMat, projectionMatrix: projMat)     
+                vertBrush.render(commandQueue, encoder, parentModelViewMatrix: modelViewMat, projectionMatrix: projMat)
+                
             }
         }
         
@@ -203,7 +211,32 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         let currentPosition = pointOfView.position + (dir * 0.12)
         
         return (currentPosition, true, pointOfView.position)
-        
     }
 
+}
+
+extension MTLTexture {
+    
+    func bytes() -> UnsafeMutableRawPointer {
+        let width = self.width
+        let height   = self.height
+        let rowBytes = self.width * 4
+        let p = malloc(width * height * 4)
+        self.getBytes(p!, bytesPerRow: rowBytes, from: MTLRegionMake2D(0, 0, width, height), mipmapLevel: 0)
+        return p!
+    }
+    
+    func toImage() -> CGImage? {
+        let p = bytes()
+        
+        let pColorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo: CGBitmapInfo = [CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue), .byteOrder32Big]
+        
+        let selftureSize = self.width * self.height * 4
+        let rowBytes = self.width * 4
+        let provider = CGDataProvider(dataInfo: nil, data: p, size: selftureSize, releaseData: { _,_,_  in })
+        let cgImageRef = CGImage(width: self.width, height: self.height, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: rowBytes, space: pColorSpace, bitmapInfo: bitmapInfo, provider: provider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)!
+        
+        return cgImageRef
+    }
 }

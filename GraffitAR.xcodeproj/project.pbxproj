@@ -27,6 +27,7 @@
 		A1B900771F6DE114005E04A7 /* MyDrawingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900761F6DE114005E04A7 /* MyDrawingDetailViewController.swift */; };
 		A1B9007A1F6E066E005E04A7 /* CreateDrawingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B900781F6E066E005E04A7 /* CreateDrawingCell.swift */; };
 		A1B9007B1F6E066E005E04A7 /* CreateDrawingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B900791F6E066E005E04A7 /* CreateDrawingCell.xib */; };
+		A1B9083A1F6E78DF003A1D2E /* CAMetalLayer++.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B908391F6E78DF003A1D2E /* CAMetalLayer++.swift */; };
 		A1CB9ECB1F6D64B7003AB27B /* GalleryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */; };
 		A1CB9ECC1F6D64B7003AB27B /* GalleryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */; };
 		A1CB9ECF1F6D65C5003AB27B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */; };
@@ -62,6 +63,7 @@
 		A1B900761F6DE114005E04A7 /* MyDrawingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyDrawingDetailViewController.swift; path = GraffitAR/ViewControllers/MyDrawingDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1B900781F6E066E005E04A7 /* CreateDrawingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateDrawingCell.swift; path = ../CreateDrawingCell/CreateDrawingCell.swift; sourceTree = "<group>"; };
 		A1B900791F6E066E005E04A7 /* CreateDrawingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CreateDrawingCell.xib; path = ../CreateDrawingCell/CreateDrawingCell.xib; sourceTree = "<group>"; };
+		A1B908391F6E78DF003A1D2E /* CAMetalLayer++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAMetalLayer++.swift"; sourceTree = "<group>"; };
 		A1CB9EC91F6D64B7003AB27B /* GalleryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemCell.swift; sourceTree = "<group>"; };
 		A1CB9ECA1F6D64B7003AB27B /* GalleryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryItemCell.xib; sourceTree = "<group>"; };
 		A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				A1B9006D1F6DCADA005E04A7 /* float4x4++.swift */,
 				A1CB9ECE1F6D65C5003AB27B /* Reusable.swift */,
 				A1B900601F6DA400005E04A7 /* SCNVector3++.swift */,
+				A1B908391F6E78DF003A1D2E /* CAMetalLayer++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				A1CB9EDD1F6D6E73003AB27B /* DataController.swift in Sources */,
 				A1B900611F6DA400005E04A7 /* SCNVector3++.swift in Sources */,
 				A1ECBC411F6D60A100C5C398 /* SettingsViewController.swift in Sources */,
+				A1B9083A1F6E78DF003A1D2E /* CAMetalLayer++.swift in Sources */,
 				A1B900701F6DCB30005E04A7 /* Shaders.metal in Sources */,
 				A1B900771F6DE114005E04A7 /* MyDrawingDetailViewController.swift in Sources */,
 				A1CB9ED91F6D670A003AB27B /* User.swift in Sources */,
@@ -549,7 +553,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QTNP244GYS;
+				DEVELOPMENT_TEAM = TSCXJ4KWQ4;
 				INFOPLIST_FILE = GraffitAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graffitar.GraffitAR;
@@ -565,7 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QTNP244GYS;
+				DEVELOPMENT_TEAM = TSCXJ4KWQ4;
 				INFOPLIST_FILE = GraffitAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graffitar.GraffitAR;
