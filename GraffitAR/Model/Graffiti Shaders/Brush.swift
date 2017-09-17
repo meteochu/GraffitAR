@@ -211,6 +211,7 @@ class VertBrush {
         lastVertUpdateIdx = lastVert
         lastIndexUpdateIdx = lastIndex
         objc_sync_exit(self)
+        self.updateBuffers()
     }
     
     func savePoints(){
@@ -220,13 +221,6 @@ class VertBrush {
         let uid = Auth.auth().currentUser?.uid
         
         DataController.shared.uploadGraffiti(name: "test", imageRef: "1234567890.png", creator: uid, isPublished: false, detail: "", saveObj: saveObj)
-    }
-    
-    func loadPoints(){
-        
-//        self.setPoints(vert: pointsData.vertices, pnts:pointsData.points, idces: pointsData.indices, lastVert:pointsData.lastVert, lastIndex:pointsData.lastIndex)
-//
-        self.updateBuffers()
     }
     
     func clear() {

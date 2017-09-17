@@ -36,6 +36,6 @@ class Graffiti: NSObject, Codable {
     
     var detail: String = ""
     
-    var graffitiObj: GraffitiObject?
+    var graffitiObj: GraffitiObject!
     
 }

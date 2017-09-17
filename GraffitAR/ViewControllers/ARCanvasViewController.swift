@@ -75,6 +75,13 @@ class ARCanvasViewController: UIViewController, ARSCNViewDelegate {
         dismiss(animated: true, completion: nil)
     }
     
+    func loadPreset(graffiti:Graffiti) {
+        self.isDrawing = false
+        let obj:GraffitiObject = graffiti.graffitiObj!
+        
+        vertBrush.setPoints(vert: obj.vertices, pnts: obj.points, idces: obj.indices, lastVert: obj.lastVert, lastIndex: obj.lastIndex)
+    }
+    
     @IBAction func didSelectDrawButton(_ sender: UIButton) {
         self.isDrawing = !self.isDrawing
         if ( self.isDrawing ) {
