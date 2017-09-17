@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MyDrawingDetailViewController: UIViewController {
     
@@ -42,7 +43,6 @@ class MyDrawingDetailViewController: UIViewController {
     deinit {
         guard let handle = handle else { return }
         DataController.shared.stop(handle: handle)
-        
     }
     
     override func viewDidLoad() {
@@ -53,7 +53,6 @@ class MyDrawingDetailViewController: UIViewController {
     func reloadData() {
         graffitiNameLabel.text = graffiti.name
         createdDateLabel.text = "Created on \(DateFormatter.localizedString(from: graffiti.created, dateStyle: .short, timeStyle: .short))"
-        artistNameLabel.text = "by \(graffiti.creator)"
         detailLabel.text = graffiti.detail
         downloadCountLabel.text = "\(graffiti.downloads) Downloads"
         
@@ -62,7 +61,7 @@ class MyDrawingDetailViewController: UIViewController {
         }
         
         if let user = DataController.shared.users[graffiti.creator] {
-            self.artistNameLabel.text = user.name
+            self.artistNameLabel.text = "by \(user.name)"
             for key in user.favourites {
                 if key == graffiti.id {
                     self.isFavourited = true
@@ -81,26 +80,47 @@ class MyDrawingDetailViewController: UIViewController {
         
         self.favouriteButton.image = self.isFavourited ?  #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star-Bordered")
         
-        if graffiti.isPublished {
-            self.publishButton.setTitle("Published", for: UIControlState.normal)
-            self.publishButton.isEnabled = false
+        if graffiti.creator == Auth.auth().currentUser!.uid {
+            if graffiti.isPublished {
+                self.publishButton.setTitle("Artwork is published", for: .normal)
+                self.publishButton.backgroundColor = UIColor.gray
+                self.publishButton.isEnabled = false
+            } else {
+                self.publishButton.setTitle("Publish Artwork", for: .normal)
+                self.publishButton.isEnabled = true
+            }
         } else {
-            self.publishButton.setTitle("Publish", for: UIControlState.normal)
-            self.publishButton.isEnabled = true
+            publishButton.isHidden = true
         }
-        
     }
     
     @IBAction func didSelectStarButton(_ sender: UIBarButtonItem) {
         self.isFavourited = !self.isFavourited
         sender.image = self.isFavourited ?  #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star-Bordered")
-        DataController.shared.favouriteGraffiti(graffiti, isFavourited:self.isFavourited)
+        DataController.shared.favouriteGraffiti(graffiti, isFavourited: self.isFavourited)
     }
-    
     
     @IBAction func didSelectPublishButton(_ sender: UIButton) {
-        DataController.shared.publishGraffiti(graffiti)
+        let startTime = Date().timeIntervalSince1970
+        let alertController = UIAlertController(title: "Publishing Graffiti...", message: nil, preferredStyle: .actionSheet)
+        alertController.popoverPresentationController?.sourceView = sender
+        alertController.popoverPresentationController?.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.height, width: 0, height: 0)
+        alertController.popoverPresentationController?.permittedArrowDirections = .up
+        self.present(alertController, animated: true) {
+            DataController.shared.publishGraffiti(self.graffiti) {
+                let endTime = Date().timeIntervalSince1970
+                let interval = endTime - startTime
+                DispatchQueue.main.asyncAfter(deadline: .now() + (2 - interval)) { [unowned self] in
+                    alertController.dismiss(animated: true, completion: nil)
+                    DataController.shared.fetchGraffiti(withId: self.graffiti.id) { graffiti in
+                        if let graf = graffiti {
+                            self.graffiti = graf
+                            self.reloadData()
+                        }
+                    }
+                }
+            }
+        }
     }
-    
     
 }

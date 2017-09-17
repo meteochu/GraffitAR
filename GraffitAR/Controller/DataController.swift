@@ -130,6 +130,22 @@ class DataController: NSObject {
         }
     }
     
+    func fetchGraffiti(withId id: String, callback: @escaping (Graffiti?) -> Void) {
+        Database.database().reference().child("graffiti").observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let dict = snapshot.value as? [String: Any], let decoder = self?.decoder else {
+                return callback(nil)
+            }
+            do {
+                let data = try JSONSerialization.data(withJSONObject: dict, options: [])
+                let graffiti = try decoder.decode(Graffiti.self, from: data)
+                callback(graffiti)
+            } catch{
+                print(error)
+                callback(nil)
+            }
+        }
+    }
+    
     func fetchGalleryDrawings(callback: @escaping ([Graffiti]?) -> Void) -> UInt {
         let reference = Database.database().reference()
         return reference.child("graffiti").observe(.value, with: { [weak self] snapshot  in
@@ -167,12 +183,13 @@ class DataController: NSObject {
         }
     }
     
-    func publishGraffiti(_ graffiti: Graffiti) {
+    func publishGraffiti(_ graffiti: Graffiti, callback: @escaping () -> Void) {
         let uid = Auth.auth().currentUser!.uid
         let reference = Database.database().reference()
         if graffiti.creator == uid && !graffiti.isPublished {
             reference.child("graffiti").child(graffiti.id).child("isPublished").setValue(true)
         }
+        callback()
     }
     
     func favouriteGraffiti(_ graffiti: Graffiti, isFavourited: Bool) {
