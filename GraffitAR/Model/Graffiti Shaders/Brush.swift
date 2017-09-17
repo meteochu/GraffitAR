@@ -36,7 +36,7 @@ extension SCNVector3: Codable {
 
 struct GraffitiObject: Codable {
     
-    let vertices: [Vertex]
+    var vertices: [Vertex] = []
     
     let points: [SCNVector3]
     

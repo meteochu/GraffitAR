@@ -105,9 +105,9 @@ class DataController: NSObject {
         let currentUser = Auth.auth().currentUser!.uid
         let jpegData = UIImageJPEGRepresentation(image, 0.8)!
         let metadata = StorageMetadata()
-        let imageId = UUID().uuidString
+        let imageId = "\(UUID().uuidString).jpg"
         metadata.contentType = "image/jpg"
-        Storage.storage().reference(withPath: "graffiti").child("\(imageId).jpg").putData(jpegData, metadata: metadata) { [weak self] metadata, error in
+        Storage.storage().reference(withPath: "graffiti").child(imageId).putData(jpegData, metadata: metadata) { [weak self] metadata, error in
             if let error = error {
                 callback(error)
             } else {
