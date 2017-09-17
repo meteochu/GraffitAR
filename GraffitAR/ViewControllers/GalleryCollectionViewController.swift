@@ -29,8 +29,6 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
             if let array = array {
                 self?.graffitis = array
                 self?.collectionView?.reloadData()
-            } else {
-                print("I don't know what's wrong. fuck")
             }
         })
     }
